@@ -1,0 +1,95 @@
+{include file="Public/header.html"}
+<form method="post" action="?c={$c}&act=saveyhq&id={$rs.id}">
+	<div class="panel panel-default" style="margin-top: 15px;">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<i class="fa fa-user"></i>
+				充值优惠券
+			</h3>
+		</div>
+		<div id="panel-collapse-4" class="collapse in" style="height: auto;">
+			<div class="panel-heading">
+				{*
+				<ul id="ctl00_contentHolder_plUl"
+					class="nav nav-tabs nav-primary item-color">
+					<li class="active">
+						<a>基本信息</a>
+					</li>
+					<li class="">
+						<a href=''>登录密码</a>
+					</li>
+					<li class="hide">
+						<a href=''>交易密码</a>
+					</li>
+				</ul>
+				*}
+			</div>
+			<div class="panel-body">
+
+				<div class="tab-content form-horizontal">
+					<div class="form-body">
+						<div class="row">
+							   <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">充值优惠券金额</label>
+                                    <div class="col-md-9">
+									<select name="yhq_type_id">
+									<option value="0">请选择优惠券</option>
+									{foreach $yhq2 as $key =>$value}
+									<option value="{$value['id']}">{$value['name']}元</option>
+									{/foreach}
+								</select>
+                                    </div>
+                                </div>
+                            </div>
+
+						</div>
+						
+ 
+
+
+						<div class="form-actions fluid">
+							<div class="col-md-offset-4 col-md-9">
+							     <input type="hidden" value="{$rs.id}" name="id" />
+								<input type="submit" value="保 存" class="btn btn-primary" />
+								<a href="?c={$c}" class="btn btn-default">返 回</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</form>
+<h3 class="form-section">优惠券详情</h3>
+<div>
+	<table cellspacing="0" class="table table-striped table-hover table-bordered dataTable" border="0" id="ctl00_contentHolder_grdProducts" style="width:100%;border-collapse:collapse;">
+		<tr>
+			<th class="td_right td_left" scope="col" style="width:20%;">优惠券</th>
+			<th class="td_right td_left" scope="col" style="width:20%;">状态</th>
+			<th class="td_right td_left" scope="col" style="width:10%;">时间</th>
+		</tr>
+        {if $yhq_detail2}
+        {foreach $yhq_detail2 as $k=>$v}
+		<tr>
+            <td>
+			{foreach $yhq2 as $key =>$value}
+			{if $v.wd_time==$value.id}
+			{$value.name}
+			{/if}
+			{/foreach}
+			</td>
+			<td>
+			{if $v.oper_id}已用{else}未用{/if}
+			</td>
+            <td>
+                <strong class="colorG"><span id="ctl00_contentHolder_grdProducts_ctl02_lblTotalPrice">{if $v.op_time}{$v.op_time|date_format:"%Y-%m-%d %H:%M:%S"}{else}0{/if}</span></strong> 
+            </td>
+        </tr>
+        {/foreach}
+        {/if}
+	</table>
+	</div>
+</div>
+
+
+{include file="Public/footer.html"}

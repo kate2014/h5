@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link href="js/jquery.autocomplete.css" rel="stylesheet" />
+<script src="js/jquery-1.x.min.js" ></script>
+<script src="js/jquery.autocomplete.min.js" ></script>
+<script src="js/jquery.autocomplete.js" ></script>
+<script>
+$(function(){
+	var data = [{text:'Link A', url:'/page1'}, {text:'Link B', url: '/page2'} ]; 
+	$("input[name='abc[]']").autocomplete(data,{ 
+		minChars:1,
+		formatItem: function(item) { 
+			return item.text; 
+		}
+		
+	}).result(function(event,item) { 
+	//	location.href = item.url; 
+		$(this).next().val(item.url);
+	}); 
+
+});
+</script>
+</head>
+<body>
+<div id="tip"></div>
+<div>
+	<input type="text" name="abc[]" id="" />
+	<input type="text" name="ccc[]" id="" />
+</div>
+<div>
+	<input type="text" name="abc[]" id="" />
+	<input type="text" name="ccc[]" id="" />
+</div>
+</body>
+</html>

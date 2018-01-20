@@ -1,0 +1,39 @@
+<div class="top-navbar ">
+    <div class="top-navbar-inner">
+        <div class="logo-brand ">
+            <a href="?c=Index" >
+                <!-- <img src="{$tpl_path}resource/images/logo-login.png"  style="margin-top: 8px;max-width: 121px; margin-left:-82px"/> -->
+            </a>
+        </div>
+        <div class="top-nav-content">
+            <div class="btn-collapse-sidebar-left"> <i class="fa fa-bars"></i>
+            </div>
+            <ul class="nav-user navbar-right" style="position: initial;">
+                <li class="dropdown">
+                    <a href="#fakelink" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-key"></i> <strong>{$smarty.session.admin_account}</strong>
+                        &nbsp;&nbsp;
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="dropdown-menu square primary margin-list-rounded with-triangle">
+                        <li>
+                            <a href="?c=admin&act=updatePassword" >修改密码</a>
+                        </li>
+                        <li>
+                            <a href="?c=login&act=logout" >退出</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            {* 商城预览 *}
+            <ul class="nav-user navbar-right" style="position: initial;">
+                <input type="hidden" id="ws_url" value="http://{$server_url}/mobi.php" />
+                <!-- <li id="yw" class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle" onclick="$('#wshopft').show();$('#phone').show();$('#showtmpl').attr('src', $('#ws_url').val());">
+                        <i class="fa fa-eye"></i> <strong>微商城预览</strong>
+                    </a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+</div>

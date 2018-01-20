@@ -1,0 +1,93 @@
+{include file='Public/header.html'}
+{literal}
+    <style type="text/css">
+        /* pop */
+        #pop{background:#fff;width:260px;border:1px solid #e0e0e0;font-size:12px;position:fixed;right:10px;bottom:10px;}
+        #popHead{line-height:32px;background:#f6f0f3;border-bottom:1px solid #e0e0e0;position:relative;font-size:12px;padding:0 0 0 10px;}
+        #popHead h2{font-size:14px;color:#666;line-height:32px;height:32px;margin: 0;}
+        #popHead #popClose{position:absolute;right:10px;top:1px;}
+        #popHead a#popClose:hover{color:#f00;cursor:pointer;}
+        #popContent{padding:5px 10px;}
+        #popTitle a{line-height:24px;font-size:14px;font-family:'微软雅黑';color:#333;font-weight:bold;text-decoration:none;}
+        #popTitle a:hover{color:#f60;}
+        #popIntro{text-indent:24px;line-height:160%;margin:5px 0;color:#666;}
+        #popMore{text-align:right;border-top:1px dotted #ccc;line-height:24px;margin:8px 0 0 0;}
+        #popMore a{color:#f60;}
+        #popMore a:hover{color:#f00;}
+
+    .windowsdialog .dialog-word li{list-style-type: none;};
+     .radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"]{margin-left: 0;}
+    .form-horizontal .radio{padding-top:0;}
+    @media(max-width:767px)
+    {
+    	#yw{display:none}
+    }
+    </style>
+{/literal}
+
+
+
+<form action="?c=admin&act=savezhPassword" method="post" onsubmit="return checkform()">
+    <input type="hidden" name="id" value="{$rs.id}" />
+    <div class="panel panel-default" style="margin-top:15px;">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-cog"></i>  修改密码</h3>
+        </div>
+	    <div id="panel-collapse-4" class="collapse in" style="height: auto;">
+	      <div class="panel-body">
+               
+		       <div class="form-horizontal">
+                <div class="form-group">                     
+                    <label class="control-label col-md-3">旧密码</label>                     
+                    <div class="col-md-4">
+                        <input name="password" id="password" value="" type="password" class="form-control" placeholder="旧密码" /> 
+                    </div>                 
+                </div>
+                <div class="form-group">                     
+                    <label class="control-label col-md-3">新密码</label>                     
+                    <div class="col-md-4">
+                        <input name="newpwd" id="newpwd" value="" type="password" class="form-control" placeholder="新密码" /> 
+                    </div>                 
+                </div>
+                <div class="form-group">                     
+                    <label class="control-label col-md-3">确认密码</label>                     
+                    <div class="col-md-4">      
+                        <input name="cmfpwd" type="password" id="cmfpwd" class="form-control" placeholder="确认密码" />  
+                    </div>                 
+                </div> 
+                <div class="form-actions fluid">              
+                    <div class="col-md-offset-4 col-md-9">
+                        <input type="submit" value="确定" class="btn btn-primary" />
+                    </div>    
+                </div>
+		       </div>
+	      </div>
+	    </div>
+    </div>
+    
+    
+            </form>
+            
+<script type="text/javascript">
+{literal}
+function checkform(){
+    if(!$('#password').val()){
+        alert('密码不能为空！');
+        return false;
+    }
+    if(!$('#newpwd').val()){
+        alert('新密码不能为空！');
+        return false;
+    }
+    if(!$('#cmfpwd').val()){
+        alert('确认密码不能为空！');
+        return false;
+    }
+    if($('#newpwd').val()!=$('#cmfpwd').val()){
+        alert('新密码和确认密码不一样！');
+        return false;
+    }
+}
+{/literal}
+</script>
+{include file='Public/footer.html'}

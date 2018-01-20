@@ -1,0 +1,118 @@
+BODY {
+	BACKGROUND-COLOR: #fff;
+	MARGIN: 0px;
+	font-size: 12px;
+}
+.body2 {
+	TEXT-ALIGN: center; MARGIN: 0px; BACKGROUND: url(/images/bg.jpg) #fff repeat-x right bottom
+}
+.bgtable {
+	BORDER-LEFT: #ccc 2px solid; BORDER-RIGHT: #ccc 2px solid
+}
+.gray9pt {
+	COLOR: #333333; FONT-SIZE: 9pt; TEXT-DECORATION: none
+}
+.gray10pt {
+	COLOR: #333333; FONT-SIZE: 10pt; TEXT-DECORATION: none
+}
+.gray11pt {
+	COLOR: #333333; FONT-SIZE: 11pt; TEXT-DECORATION: none
+}
+.gray12pt {
+	COLOR: #333333; FONT-SIZE: 12pt; TEXT-DECORATION: none
+}
+A:link {
+	COLOR: #000000;
+	FONT-SIZE: 12px;
+	TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #333333;
+	FONT-SIZE: 12px;
+	TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #0099ff;
+	FONT-SIZE: 12px;
+	TEXT-DECORATION: underline
+}
+A:active {
+	COLOR: #666;
+	FONT-SIZE: 12px;
+	TEXT-DECORATION: none
+}
+.path {
+	LINE-HEIGHT: 30px; FONT-FAMILY: "ºÚÌå", "ËÎÌå", "Î¢ÈíÑÅºÚ", "ÐÂËÎÌå"; COLOR: #333333; FONT-SIZE: 12pt
+}
+UL#list {
+	LINE-HEIGHT: 30px; LIST-STYLE-TYPE: disc; MARGIN: 10px; PADDING-LEFT: 30px; WIDTH: 750px; FONT-SIZE: 12pt; VERTICAL-ALIGN: middle; LIST-STYLE-IMAGE: url(dot1.gif)
+}
+UL#list A {
+	TEXT-DECORATION: none
+}
+UL#list LI {
+	MARGIN-TOP: 5px
+}
+UL#list LI A {
+	PADDING-BOTTOM: 0.5em; PADDING-LEFT: 0.5em; PADDING-RIGHT: 0.5em; COLOR: #000; FONT-WEIGHT: normal; PADDING-TOP: 0.5em
+}
+UL#list LI A:hover {
+	BACKGROUND: #eee
+}
+.solid-bottom {
+	BORDER-BOTTOM: #dddddd 1px solid
+}
+.sec1 {
+	BORDER-BOTTOM: #ffffff 1px solid; BORDER-LEFT: #ffffff 1px solid; BACKGROUND-COLOR: #f4f4f4; COLOR: #000000; FONT-SIZE: 11pt; BORDER-TOP: #ffffff 1px solid; CURSOR: hand; BORDER-RIGHT: gray 1px solid
+}
+.sec2 {
+	BORDER-LEFT: #ffffff 1px solid; BACKGROUND-COLOR: #eaeaea; COLOR: #000000; FONT-SIZE: 11pt; BORDER-TOP: #ffffff 1px solid; CURSOR: hand; FONT-WEIGHT: bold; BORDER-RIGHT: gray 1px solid
+}
+.content_test {
+	LINE-HEIGHT: 22px; COLOR: #333333; FONT-SIZE: 11pt; TEXT-DECORATION: none
+}
+.content_test A:link {
+	COLOR: #0000ff; FONT-SIZE: 11pt; TEXT-DECORATION: none
+}
+.content_test A:visited {
+	COLOR: #0000ff; FONT-SIZE: 11pt; TEXT-DECORATION: none
+}
+.content_test A:hover {
+	COLOR: #0099ff; FONT-SIZE: 11pt; TEXT-DECORATION: underline
+}
+.content_test A:active {
+	COLOR: #0000ff; FONT-SIZE: 11pt; TEXT-DECORATION: none
+}
+.content_test2 {
+	LINE-HEIGHT: 22px; COLOR: #333333; FONT-SIZE: 11pt; TEXT-DECORATION: none
+}
+.content_test2 A:link {
+	COLOR: #333333; FONT-SIZE: 11pt; TEXT-DECORATION: none
+}
+.content_test2 A:visited {
+	COLOR: #333333; FONT-SIZE: 11pt; TEXT-DECORATION: none
+}
+.content_test2 A:hover {
+	COLOR: #0099ff; FONT-SIZE: 11pt; TEXT-DECORATION: underline
+}
+.content_test2 A:active {
+	COLOR: #333333; FONT-SIZE: 11pt; TEXT-DECORATION: none
+}
+.tzsp_index A {
+	COLOR: #666666; FONT-SIZE: 9pt; TEXT-DECORATION: none
+}
+.tzsp_index A:active A:visited A:link {
+	COLOR: #666666; FONT-SIZE: 9pt; TEXT-DECORATION: none
+}
+.tzsp_index A:hover {
+	COLOR: #0000ff; FONT-SIZE: 9pt; TEXT-DECORATION: underline
+}
+.tzsp_index1 {
+	COLOR: #666666; FONT-SIZE: 10pt; TEXT-DECORATION: none
+}
+.tzsp_index1 A {
+	COLOR: #666666; FONT-SIZE: 10pt; TEXT-DECORATION: none
+}
+.tzsp_index1 A:hover {
+	COLOR: #0000ff; FONT-SIZE: 10pt; TEXT-DECORATION: underline
+}

@@ -1,0 +1,10 @@
+@charset="utf-8";
+body{padding:0;}
+table.dataTable{padding:0;margin-top:0 !important;margin-bottom:0 !important;}
+.nowrap{white-space:nowrap;}
+/*
+body{overflow:auto;}
+*/
+.noscroll{overflow:hidden;}
+.scroll-x{overflow-x:auto;}
+

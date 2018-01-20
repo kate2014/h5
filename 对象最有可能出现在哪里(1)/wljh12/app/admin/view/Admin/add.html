@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" >
+<title>添加</title>
+<link rel="stylesheet" href="{$tpl_path}resource/css/style.css" />
+<link rel="stylesheet" href="{$tpl_path}resource/css/main.css" />
+<script type="text/javascript" src="{$tpl_path}resource/js/jquery-1.x.min.js" ></script>
+<script type="text/javascript" src="{$tpl_path}resource/js/admin.js" ></script>
+</head>
+<body>
+<div class="main_head">
+	<h2 class="left main_head_title"> 
+		<a href="?c={$c}">用户管理</a> - 
+		添加
+	</h2>
+	<div class="right">
+		<a href="?c={$c}&act=index" class="btn btn_add">查看列表</a>
+	</div>
+</div>
+<div class="main_head_bg"></div>
+<!--主体内容 begin-->
+<div class="main_body">
+    <form action="?c={$c}&act=save" method="post" onSubmit="return CheckForm()">
+	<table class="edit_table">
+		<tbody>
+			<tr>
+				<td><span class="td_tit">用户名：</span>
+					<input name="username" value="" type="text" class="input_normal" /></td>
+			</tr>
+			<tr>
+				<td><span class="td_tit">密码：</span>
+					<input name="password" value="123456" type="text" class="input_normal" />
+					<span class="td_tip"></span>
+				</td>
+			</tr>
+			<tr>
+				<td><span class="td_tit">序列号：</span>
+					<input name="sn" value="" type="text" class="input_normal" />
+                    <span class="td_tip"></span>
+                </td>
+			</tr>
+			<tr>
+				<td><span class="td_tit">真实姓名：</span>
+					<input name="real_name" value="" type="text" class="input_normal" /></td>
+			</tr>
+			<tr>
+				<td><span class="td_tit">状态：</span>
+					<label><input name="status" value="1" type="radio" checked /> 启用</label>&nbsp;&nbsp;
+					<label><input name="status" value="0" type="radio" /> 禁用</label>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top"><span class="td_tit">备注信息：</span>
+					<textarea name="note" class="note"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="pad_left_a"><input type="submit" value=" 提 交 " class="submit" /></div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+    </form>
+
+</div>
+<!--主体内容 end-->
+<div class="main_foot_bg"></div>
+ 
+	function CheckForm(){
+		if($("input[name='username']").val()==""){
+			alert("用户名不能为空");
+			return false;
+		}
+		if($("input[name='password']").val()==""){
+			alert("密码不能为空");
+			return false;
+		}
+		if($("input[name='real_name']").val()==""){
+			alert("真实姓名不能为空");
+			return false;
+		}
+		if($("input[name='sn']").val()==""){
+			alert("序列号不能为空");
+			return false;
+		}
+	}
+</script>
+</body>
+</html>

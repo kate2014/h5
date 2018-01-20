@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="" name="Keywords">
+    <meta name="description" content="“">
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+        }
+        .select_ctn{
+            text-align: center;
+            /*display: none;*/
+        }
+        .select_ctn label {
+            display: inline-block;
+            width: 49%;
+            margin: 15px 0;
+            font-size: 20px;
+            font-weight: bold;
+                    }
+
+        .select_ctn input {
+            width: 20px;
+            height: 20px;
+            margin: 0;
+            vertical-align: bottom;
+        }
+        .bg{
+            width:100%;
+            height: 100%;
+            position: fixed;
+            z-index: -1;
+
+        }
+        body{
+            overflow: hidden;
+        }
+
+
+        .banner{
+            position: fixed;
+            bottom: 0;
+            left:0;
+            width: 100%;
+        }
+        .titlediv{
+            top:12px;
+            position:absolute;
+        }
+        .title{
+            width: 80%;
+            margin: 0 10%;
+        }
+        .subtitle{
+            font-family: PingFangSC-Regular;
+            font-size: 16px;
+            color: #71dfff;
+            letter-spacing: 3px;
+            text-align: center;
+            width: 100%;
+            line-height: 18px;
+
+        }
+        .op{
+            width:75%;
+            margin-left: 12.5%;
+            position: absolute;
+            bottom:15%;
+
+        }
+        .input{
+            margin: 0;
+            padding: 0;
+            background-color: RGBA(219, 219, 219, 1.00);
+            text-align: center;
+            width: 100%;
+            border: 2px solid #1A86D8;
+            border-radius: 10px;
+            height: 60px;
+            color: #1A86D8;
+            letter-spacing: 2px;
+            font-size: 20px;
+            line-height: 60px;
+        }
+        .btn{
+            width:80%;
+            margin:20% 10% 15% 10%;
+        }
+        .tip {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-top: -75px;
+            margin-left: -75px;
+            width: 150px;
+            height: 150px;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            border-radius: 10px;
+        }
+        .tip img {
+            width: 60px;
+            height: 60px;
+            margin: 20px 45px 0;
+        }
+        .tip p {
+            font-size: 16px;
+            color: #fff;
+            text-align: center;
+            line-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+<img class="bg" src="./images/bg.png" />
+<div class="op">
+    <input class="input" id="name" placeholder="请输入你的名字" maxlength="10"></input>
+    <img class="btn" id="submit" src="./images/btn1.png"/>
+</div>
+    <div class="tip">
+        <img src="" alt="">
+        <p></p>
+    </div>
+<script type="text/javascript">
+//获取地址栏参数//可以是中文参数
+function getUrlParam(key) {
+    // 获取参数
+    var url = window.location.search;
+    // 正则筛选地址栏
+    var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+    // 匹配目标参数
+    var result = url.substr(1).match(reg);
+    //返回参数值
+    return result ? decodeURIComponent(result[2]) : null;
+}
+
+
+</script>
+<script>
+    $('#submit').on('click',function(){
+        console.log($("input[type='radio']:checked").val())
+        if($('#name').val()==''){
+            $('.tip').show();
+            $('.tip').children('img').attr('src','./images/gantan.png')
+            $('.tip').children('p').html('请输入姓名')
+            setTimeout(function(){
+                $('.tip').hide();
+            },2000)
+            return false;
+        }
+  
+        if(getUrlParam('cate_id')){
+            var cate_id = getUrlParam('cate_id');
+        }else {
+            var cate_id = 1;
+        }
+        console.log(cate_id)
+
+        window.location.href = './result.html?cate_id='+cate_id+'&name='+encodeURIComponent($('#name').val());
+
+    })
+
+</script>
+</body>
+</html>

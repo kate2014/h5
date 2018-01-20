@@ -1,0 +1,73 @@
+{include file="Public/header.html"}
+<form method="post" action="?c={$c}&act=pointSetDo">
+	<div class="panel panel-default" style="margin-top: 15px;">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<i class="fa fa-user"></i>
+				积分设置
+			</h3>
+		</div>
+		<div id="panel-collapse-4" class="collapse in" style="height: auto;">
+			<div class="panel-body">
+
+				<div class="tab-content form-horizontal">
+					<div class="form-body tab-pane active" id="tab_0">
+						<div class="row">
+							<div class="col-md-8">
+								<div class="form-group">
+									<label class="control-label col-md-3">积分比例</label>
+									<div class="col-md-9">
+										<p class="form-control-static">
+                                        <input type="text" class="input-small" name="ratio" value="{$rs.ratio}" />
+                                        积分 = 1元</p>
+									</div>
+								</div>
+							</div>
+                        </div>    
+					</div>
+                    
+                    
+                    <div class="form-actions fluid">
+                        <div class="col-md-8">
+							<label class="control-label col-md-3"></label>
+                            <input type="hidden" name="id" value="{$rs.id}"/>
+                            <input type="submit" value="保 存" class="btn btn-primary" />
+                            <a href="?c={$c}" class="btn btn-default">返 回</a>
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</div>
+</form>
+</div>
+{*
+<script type="text/javascript">
+{literal}
+    var index = parent.layer.getFrameIndex(window.name);
+    $(function () {
+        //保存设置
+        $('#Button2').click(function () {
+            //            parent.layer.close(index);
+            //            parent.location.reload();
+            var loadi = layer.load('数据存储中，请稍候...');
+        });
+        
+        $('#btn_change_superior').click(function () {
+            $.layer({
+                type: 2,
+                title: false,
+                shadeClose: true,
+                maxmin: false,
+                fix: false,
+                border: [0],
+                area: ['600px', 410],
+                iframe: {
+                    src: '?userid=' + $('#Label1').text()
+                }
+            });
+        });
+    });
+{/literal}
+</script>
+*}
+{include file="Public/footer.html"}

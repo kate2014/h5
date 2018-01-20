@@ -1,0 +1,258 @@
+{include file="header.html"}
+<form name="aspnetForm" method="post" action="?c={$c}&act=edit&id=" id="aspnetForm">
+<div class="panel panel-default" style="margin-top:15px;">
+  <div class="panel-heading">
+    <h3 class="panel-title"><i class="fa fa-user"></i>  编辑会员信息</h3>
+  </div>
+    <div id="panel-collapse-4" class="collapse in" style="height: auto;">
+    <div class="panel-heading">
+        <ul id="ctl00_contentHolder_plUl" class="nav nav-tabs nav-primary item-color">
+            <li class="active"><a>基本信息</a></li>
+            <li class=""><a href='EditMemberLoginPassword.aspx?userId=1977'>登录密码</a></li>
+            <li class="hide"><a href='EditMemberTransactionPassword.aspx?userId=1977'>交易密码</a></li>
+        </ul>
+    </div>
+      <div class="panel-body">
+        
+        <div class="tab-content form-horizontal">
+            <div class="form-body">
+            <div class="row">
+             <div class="col-md-6"> 
+                <div class="form-group">                     
+                    <label class="control-label col-md-3">账号</label>                     
+                    <div class="col-md-9">
+                        <p class="form-control-static">oxrVKt0eUiQ5ZRgpFUcgUBwsUDbs</p>
+                    </div>                 
+                </div>
+                </div>
+                 <div class="col-md-6"> 
+                    <div class="form-group hide">                     
+                        <label class="control-label col-md-3">账户状态</label>                     
+                        <div class="col-md-4"> 
+                           <select name="ctl00$contentHolder$ddlApproved" id="ctl00_contentHolder_ddlApproved" class="form-control">
+	<option selected="selected" value="True">通过</option>
+	<option value="False">禁止</option>
+
+</select>
+                        </div>                 
+                    </div>
+                 </div>
+             </div>
+                <div class="form-group hide">                     
+                    <label class="control-label col-md-3">会员等级</label>                     
+                    <div class="col-md-9"> <select name="ctl00$contentHolder$drpMemberRankList" id="ctl00_contentHolder_drpMemberRankList" class="form-control">
+	<option selected="selected" value="1">普通会员</option>
+
+</select>
+                    </div>                 
+                </div>
+                <div class="row">
+                <div class="col-md-6">
+                <div class="form-group">                     
+                    <label class="control-label col-md-3">真实姓名</label>                     
+                    <div class="col-md-9"> <input name="ctl00$contentHolder$txtRealName" type="text" id="ctl00_contentHolder_txtRealName" class="form-control" />
+                    <p class="help-block">真实姓名长度在20个字符以内</p>
+                    </div>                 
+                </div>
+                </div>
+                <div class="col-md-6">
+                <div class="form-group">                     
+                    <label class="control-label col-md-3">生日</label>    
+                    <div class="col-md-9">        
+                        <input name="ctl00$contentHolder$calBirthday" type="text" id="ctl00_contentHolder_calBirthday" class="form-control datepicker" data-date-format="yyyy-mm-dd" data-lang="zh-CN" />
+                    </div>
+                 </div> 
+                 </div>  
+                <div class="row">
+                <div class="col-md-6">      
+                <div class="form-group">                     
+                    <label class="control-label col-md-3">性别</label>    
+                    <div class="col-md-9">       
+                        <span id="ctl00_contentHolder_gender"><input id="ctl00_contentHolder_gender_0" type="radio" name="ctl00$contentHolder$gender" value="0" checked="checked" /><label for="ctl00_contentHolder_gender_0">保密</label><input id="ctl00_contentHolder_gender_1" type="radio" name="ctl00$contentHolder$gender" value="1" /><label for="ctl00_contentHolder_gender_1">男</label><input id="ctl00_contentHolder_gender_2" type="radio" name="ctl00$contentHolder$gender" value="2" /><label for="ctl00_contentHolder_gender_2">女</label></span>   </div>      
+                    </div> 
+                  </div>   
+                <div class="col-md-6">             
+                <div class="form-group">                     
+                    <label class="control-label col-md-3">电子邮件地址</label>                     
+                    <div class="col-md-9"> <input name="ctl00$contentHolder$txtprivateEmail" type="text" value="oxrVKt0eUiQ5ZRgpFUcgUBwsUDbs@localhost.com" id="ctl00_contentHolder_txtprivateEmail" class="form-control" />
+                    <p class="help-block">请输入正确电子邮件，长度在1-256个字符以内</p>
+                    </div>                 
+                </div>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-md-6">   
+                <div class="form-group">                     
+                    <label class="control-label col-md-3">QQ</label>                     
+                    <div class="col-md-9"> <input name="ctl00$contentHolder$txtQQ" type="text" id="ctl00_contentHolder_txtQQ" class="form-control num" />
+                    </div>                 
+                </div>
+                </div>
+                <div class="col-md-6"> 
+                <div class="form-group">                     
+                    <label class="control-label col-md-3">旺旺</label>                     
+                    <div class="col-md-9"> <input name="ctl00$contentHolder$txtWangwang" type="text" id="ctl00_contentHolder_txtWangwang" class="form-control num" />
+                    </div>                 
+                </div>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-md-6"> 
+                <div class="form-group">                     
+                    <label class="control-label col-md-3">MSN</label>                     
+                    <div class="col-md-9"> <input name="ctl00$contentHolder$txtMSN" type="text" id="ctl00_contentHolder_txtMSN" class="form-control" />
+                    <p class="help-block">请输入正确MSN帐号，长度在1-256个字符以内</p>
+                    </div>                 
+                </div>
+                </div>
+                <div class="col-md-6"> 
+                <div class="form-group">                     
+                    <label class="control-label col-md-3">电话号码</label>                     
+                    <div class="col-md-9"> <input name="ctl00$contentHolder$txtTel" type="text" id="ctl00_contentHolder_txtTel" class="form-control num" />
+                    </div>                 
+                </div>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-md-6"> 
+                <div class="form-group">                     
+                    <label class="control-label col-md-3">手机号码</label>                     
+                    <div class="col-md-9"> <input name="ctl00$contentHolder$txtCellPhone" type="text" id="ctl00_contentHolder_txtCellPhone" class="form-control num" />
+                    <p class="help-block">手机号码长度限制在3-20个字符之间,只能输入数字</p>
+                    </div>                 
+                </div>
+                </div>
+                <div class="col-md-6"> 
+                <div class="form-group">                     
+                    <label class="control-label col-md-3">详细地址</label>                     
+                     <div class="col-md-9"><span id="ctl00_contentHolder_rsddlRegion"><span style="margin-left:5px"></span><span><select id="ddlRegions1" name="ddlRegions1" selectset="regions">
+	<option value="">
+		-请选择-
+	</option><option value="100">
+		浙江省
+	</option><option value="213">
+		上海
+	</option><option value="236">
+		江苏省
+	</option><option value="374">
+		安徽省
+	</option><option value="516">
+		江西省
+	</option><option value="642">
+		北京
+	</option><option value="663">
+		天津
+	</option><option value="684">
+		河北省
+	</option><option value="883">
+		山西省
+	</option><option value="1026">
+		内蒙古自治区
+	</option><option value="1152">
+		山东省
+	</option><option value="1332">
+		河南省
+	</option><option value="1529">
+		湖北省
+	</option><option value="1662">
+		湖南省
+	</option><option value="1813">
+		海南省
+	</option><option value="1840">
+		福建省
+	</option><option value="1944">
+		广东省
+	</option><option value="2111">
+		广西壮族自治区
+	</option><option value="2249">
+		辽宁省
+	</option><option value="2384">
+		吉林省
+	</option><option value="2467">
+		黑龙江省
+	</option><option value="2625">
+		新疆维吾尔自治区
+	</option><option value="2753">
+		陕西省
+	</option><option value="2881">
+		甘肃省
+	</option><option value="2995">
+		青海省
+	</option><option value="3055">
+		宁夏回族自治区
+	</option><option value="3087">
+		重庆
+	</option><option value="3130">
+		四川省
+	</option><option value="3356">
+		贵州省
+	</option><option value="3464">
+		云南省
+	</option><option value="3626">
+		西藏自治区
+	</option><option value="3714">
+		台湾省
+	</option><option value="3795">
+		香港特别行政区
+	</option><option value="3799">
+		澳门特别行政区
+	</option><option value="3802">
+		海外
+	</option>
+</select></span><span style="margin-left:5px"></span><span><select id="ddlRegions2" name="ddlRegions2" selectset="regions">
+	<option value="">
+		-请选择-
+	</option>
+</select></span><span style="margin-left:5px"></span><span><select id="ddlRegions3" name="ddlRegions3" selectset="regions">
+	<option value="">
+		-请选择-
+	</option>
+</select></span></span><input id="regionSelectorValue" name="regionSelectorValue" value="0" type="hidden" /><input id="regionSelectorNull" name="regionSelectorNull" value="-请选择-" type="hidden" /></div>
+                </div> 
+                </div>
+                </div> 
+                <div class="row">
+                <div class="col-md-6">                
+                <div class="form-group">                     
+                    <label class="control-label col-md-3">街道地址</label>                     
+                    <div class="col-md-9"> <input name="ctl00$contentHolder$txtAddress" type="text" id="ctl00_contentHolder_txtAddress" class="form-control" />
+                    <p class="help-block">街道地址必须控制在100个字符以内</p>
+                    </div>                 
+                </div>
+                </div>
+                <div class="col-md-6"> 
+                <div class="form-group">                     
+                    <label class="control-label col-md-3">注册日期</label>                     
+                    <div class="col-md-9">
+                        <p class="form-control-static">2014-12-08 14:48:18</p>
+                    </div>                 
+                </div>
+                <div class="form-group">                     
+                    <label class="control-label col-md-3">最后登录日期</label>                     
+                    <div class="col-md-9">
+                        <p class="form-control-static">2014-12-08 14:48:18</p>
+                    </div>                 
+                </div>
+                </div>
+                </div>
+                <div class="form-group hide">                     
+                    <label class="control-label col-md-3">总消费金额</label>                     
+                    <div class="col-md-9">
+                        <p class="form-control-static">0.00</p>
+                    </div>                 
+                </div>
+            </div>
+            <div class="form-actions fluid">              
+                <div class="col-md-offset-4 col-md-9">
+                <input type="submit" name="ctl00$contentHolder$btnEditUser" value="保 存" onclick="return PageIsValid('validatAccount');" id="ctl00_contentHolder_btnEditUser" class="btn btn-primary" />
+                <a href="/seller/managemembers.aspx" class="btn btn-default">返 回</a>   
+                </div>         
+            </div>  
+        </div>
+      </div>
+    </div>
+</div>
+</form>
+		</div>
+        
+        {include file="footer.html"}

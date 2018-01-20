@@ -1,0 +1,31 @@
+<div id="pager_div"></div>
+                        
+<input type="hidden" name="rowtotal"
+    id="rowtotal" value="{$page.rowtotal}" />
+<input type="hidden" name="nowpage"
+    id="nowpage" value="{$page.nowpage}" />
+<input type="hidden" name="pagesize"
+    id="pagesize" value="{$page.pagesize}" />
+{literal}
+<script type="text/javascript">      
+    $(function() {
+        var pager = new PagerView('pager_div');
+        pager.pageSize = $("#pagesize").val();
+
+        pager.totalRecord = $("#rowtotal").val();
+        pager.pageIndex = $("#nowpage").val();
+        pager.render();
+        pager.onclick = function(startIndex, endIndex) {
+            var str1 = "&p=" + $("#nowpage").val();
+            var str2 = "?p=" + $("#nowpage").val();
+            var url = window.location.href;
+            url = url.replace(str1,"").replace(str2,"");
+            var pageindex = "&p=";
+            if (url.indexOf('?') < 0) {
+                pageindex = "?p=";
+            }
+            window.location.href = url + pageindex + pager.pageIndex;
+        }
+    });
+</script>   
+{/literal} 

@@ -1,0 +1,50 @@
+body{
+        padding: 0px;
+        margin: 0px;
+    }
+    .main{
+        width: 420px;
+        padding: 5px;
+        margin: 30px auto;
+        border: 1px solid rgb(212,208,200);
+    }
+
+    .banner{
+        padding-left: 10px;
+        font-weight: bold;
+        height: 57px;
+        line-height: 57px;
+        background-color: #fff;
+    }
+    .frame{
+        padding: 10px;
+        background-color: #ccc;
+    }
+
+    .inputItem{
+        margin: 10px 0px;
+    }
+
+    .inputItem label{
+        width: 80px;
+        display: inline-block;
+    }
+
+    .inputText{
+        padding: 7px 0px 7px 4px;
+        font-size: 14px;
+        width: 310px;
+    }
+
+    .ctrl{
+        padding: 5px 27px 15px 0px;
+        text-align: right;
+        background-color: #ccc;
+    }
+
+    .btn{
+        width: 70px;
+        height: 35px;
+        background-color: #fff;
+        border: 1px solid #eee;
+    }

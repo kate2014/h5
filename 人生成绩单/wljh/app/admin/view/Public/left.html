@@ -1,0 +1,67 @@
+<script type="text/javascript" src="resource/js/memory_nav.js"></script>
+<div class="sidebar-left sidebar-nicescroller ">
+    <ul class="sidebar-menu">
+        <li>
+            <a href="?c=index">
+                <i class="fa icon-sidebar fa fa-dashboard"></i>
+                <i class="fa fa-angle-right chevron-icon-sidebar"></i>
+                欢迎页
+            </a>
+        </li>
+
+        {if preg_match("/(,12,|,13,)/",$group)}
+        <li>
+            <a href="javascript:;">
+                <i class="fa icon-sidebar fa fa-bars"></i>
+                <i class="fa fa-angle-right chevron-icon-sidebar"></i>
+                文章管理
+            </a>
+            <ul class="submenu">
+                <li><a href="?c=Notice_cate">分类管理</a></li>
+                <!-- <li><a href="?c=Notice">文章列表</a></li> -->
+            </ul>
+        </li>
+        {/if}
+        {foreach $menulist as $key => $v}
+        {if preg_match("/(,1,|,2,|,3,|,4,)/",$group)}
+        <li>
+            <a href="?c=Notice&cate_id={$v.id}">
+                <i class="fa icon-sidebar fa fa-cubes"></i>
+                <i class="fa fa-angle-right chevron-icon-sidebar"></i>
+                {$v.name}
+            </a>
+        </li>
+        {/if}
+        {/foreach}
+		
+        <li>
+            <a href="?c=Message">
+                <i class="fa icon-sidebar fa fa-cubes"></i>
+                <i class="fa fa-angle-right chevron-icon-sidebar"></i>
+                在线留言
+            </a>
+        </li>
+        
+        {if preg_match("/(,14,|,15,|,16,|,17,|,18,|,19,|,20,|,30,|,31,|,32,|,33,)/",$group)}
+        <li>
+            <a href="javascript:;">
+                <i class="fa icon-sidebar fa fa-cog"></i>
+                <i class="fa fa-angle-right chevron-icon-sidebar"></i>
+                系统设置
+            </a>
+            <ul class="submenu">
+            	
+            	
+                <li>
+                    <a href="?c=Kefu">
+                        <span>客服管理</span>
+                    </a>
+                </li>
+            	
+            </ul>
+        </li>
+        {/if}
+        
+        
+    </ul>
+</div>

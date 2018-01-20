@@ -1,0 +1,111 @@
+ {include file = 'Public/header.html'}
+<form name="aspnetForm" method="post" action="?c=Carousel" id="aspnetForm">
+
+<!--数据列表区域-->
+<div class="panel panel-default" style="margin-top:15px;">
+<div class="panel-heading">
+<h3 class="panel-title">
+<i class="fa fa-cubes"></i>
+幻灯片列表
+</h3>
+</div>
+<div id="panel-collapse-4" class="collapse in" style="height: auto;">
+<div class="panel-body">
+
+<div class="btn-toolbar top-table" style="margin-bottom:0px" role="toolbar">
+	<div class="btn-group">
+		<a  class="btn  btn-default" href="?c=Carousel&act=add">
+			<i class="fa fa-plus"></i>
+			添加幻灯片
+		</a>
+	</div>
+	<div class="btn-group hide">
+		<a onclick="return CheckOrderNumber();" id="ctl00_contentHolder_btnorder" class="btn btn-default" href="javascript:__doPostBack('ctl00$contentHolder$btnorder','')">
+			<i class="fa fa-list"></i>
+			批量保存排序
+		</a>
+	</div>
+
+	<div class="form-group col-md-4 pull-right">
+		<div class="col-md-8">
+			<input name="name" type="text" id="ctl00_contentHolder_txtSearchText" Button="btnSearchButton" class="form-control input-medium" placeholder="幻灯片名称" />
+		</div>
+		<input type="submit" value="查询" id="ctl00_contentHolder_btnSearchButton" class="btn btn-primary" />
+	</div>
+</div>
+<div class="table-responsive">
+	<div class="dataTables_wrapper form-inline">
+	    <div>
+			<table cellspacing="0" class="table table-th-block table-hover dataTable" border="0" id="ctl00_contentHolder_grdBrandCategriesList" style="width:100%;border-collapse:collapse;">
+				<tr class="table_title">
+					<th class="td_right td_left" scope="col">幻灯片编号</th>
+					<th class="td_right td_left" scope="col">幻灯片图像</th>
+					<th class="td_right td_left" scope="col">幻灯片名称</th>
+					<th class="td_right td_left" scope="col" style="width:107px;">操作</th>
+				</tr>
+			{if $rslist}
+			{foreach $rslist as $key=>$value}
+				<tr>
+					<td style="width:12%;">{$value["id"]}</td>
+					<td style="width:14%;">
+						<a href="javascript:;" id="ctl00_contentHolder_grdBrandCategriesList_ctl02_A1" target="_blank">
+							<img id="ctl00_contentHolder_grdBrandCategriesList_ctl02_HiImage1" class="Img100_30" src="{$value['thumb']}" style="height:46px;width:150px;border-width:0px;" />
+						</a>
+					</td>
+					<td>{$value["title"]}</td>
+					<td>
+						<span class="submit_bianji">
+							<a id="ctl00_contentHolder_grdBrandCategriesList_ctl02_lkEdit" class="btn-default" href="?c={$c}&act=edit&id={$value['id']}">
+								<i class="fa fa-edit"></i>
+								编辑
+							</a>
+						</span>
+						&nbsp;&nbsp;
+						<span class="submit_shanchu">
+							<a onclick="javascript:del({$value['id']})" id="ctl00_contentHolder_grdBrandCategriesList_ctl02_lkbtnDelete" class="btn-default" name="ctl00$contentHolder$grdBrandCategriesList$ctl02$lkbtnDelete" href="javascript:__doPostBack('ctl00$contentHolder$grdBrandCategriesList$ctl02$lkbtnDelete','')">
+								<i class="fa fa-trash-o"></i>
+								删除
+							</a>
+						</span>
+					</td>
+				</tr>
+			{/foreach}
+			{/if}
+			</table>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+function CheckOrderNumber(){
+    var reg=/^[1-9]+$/;
+    tag=true;
+    $(".datalist input[type='text']").each(function(index,item){
+        if(!reg.test($(this).val().replace(/\s/g,""))){
+           alert("排序值不允许为非负数！");
+           tag=false; 
+           //break;
+        }
+    });
+    return tag;
+}
+</script>
+<script type="text/javascript">
+	function del(id)
+	{ 
+		if (confirm("确定要删除这条数据吗？"))
+			$.post("?c=Carousel&act=del",{
+				id:id},function(data){
+					if(data)
+						location="?c=Carousel";	
+				})
+			
+	}
+</script>
+</form>
+</div>
+</div>
+ {include file = 'Public/footer.html'}

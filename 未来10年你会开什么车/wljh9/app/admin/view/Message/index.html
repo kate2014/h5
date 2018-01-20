@@ -1,0 +1,135 @@
+{include file = 'Public/header.html'}
+
+<form name="aspnetForm" method="post" action="?c=Kefu"
+	id="aspnetForm">
+	<div class="panel panel-default" style="margin-top: 15px;">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<i class="fa fa-cubes"></i>
+				留言管理
+			</h3>
+		</div>
+		<div id="panel-collapse-4" class="collapse in" style="height: auto;">
+			<div class="panel-body">
+				<div class="btn-toolbar top-table" style="margin-bottom: 0px"
+					role="toolbar">
+					
+				</div>
+				<div class="table-responsive">
+					<div class="dataTables_wrapper form-inline">
+
+						<div>
+							<table cellspacing="0"
+								class="table table-th-block table-hover dataTable" border="0"
+								id="ctl00_contentHolder_grdProductTypes"
+								style="width: 100%; border-collapse: collapse;">
+								<tr class="table_title">
+									<th></th>
+									<th class="td_right td_left" scope="col">姓名</th>
+									<!-- <th class="td_right td_left" scope="col">电话</th> -->
+									<th class="td_right td_left" scope="col" style="">模板</th>
+									<th class="td_right td_left" scope="col">日期</th>
+									<th class="td_right td_left" scope="col" style="width:150px;">操作</th>
+								</tr>
+								{if $rslist}
+								{foreach $rslist as $key=>$value}
+								<tr>
+									<td style="width=20px;line-height:0.8;cursor: pointer;color:red;" onclick="read(this)" data="{$value['id']}">{if $value['state']==1}new{/if}</td>
+									<td style="width: 20%;">
+										<a href="result.html?cate_id=1&name={$value['name']}">{$value['name']}</a>
+									</td>
+                                    <!-- <td style="width: 20%;">
+										<span>{$value['phone']}</span>
+									</td> -->
+									<td class="spanD spanN" style="">
+										{$value['content']}
+									</td>
+									<td style="width: 20%;">
+										<span>{date("Y-m-d H:i:s",$value['inputtime'])}</span>
+									</td>
+									<td class="spanD spanN" style="width: 110px;">
+										<a
+											id="ctl00_contentHolder_grdProductTypes_ctl02_lkbViewAttribute"
+											title="编辑" class="btn-default"
+											href="?c=Message&act=edit&id={$value['id']}">
+											<i class='fa fa-edit'></i>
+											编辑
+										</a>
+										&nbsp;&nbsp;
+										<a 
+											id="ctl00_contentHolder_grdProductTypes_ctl02_lkbDelete"
+											class="btn-default"
+											href="javascript:del({$value['id']})">
+											<i class='fa fa-trash-o'></i>
+											删除
+										</a>
+									</td>
+								</tr>
+								{/foreach}
+								{/if}
+							</table>
+						</div>
+						<div id="pager_div"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<input type="hidden" name="ctl00$contentHolder$Count"
+		id="ctl00_contentHolder_Count" value="{$page['rowtotal']}" />
+	<input type="hidden" name="ctl00$contentHolder$PageIndex"
+		id="ctl00_contentHolder_PageIndex" value="{$page['nowpage']}" />
+	<script type="text/javascript">
+		$(function() {
+			var pager = new PagerView('pager_div');
+			pager.pageSize = {$page["pagesize"]};
+			pager.totalRecord = $("#ctl00_contentHolder_Count").val();
+			pager.pageIndex = $("#ctl00_contentHolder_PageIndex").val();
+			pager.render();
+			pager.onclick = function(startIndex, endIndex) {
+				var url = window.location.href
+						.replace(
+								"&p="
+										+ $("#ctl00_contentHolder_PageIndex")
+												.val(), "").replace(
+								"?p="
+										+ $("#ctl00_contentHolder_PageIndex")
+												.val(), "");
+				var pageindex = "&p=";
+				if (url.indexOf('?') < 0) {
+					pageindex = "?p=";
+				}
+				window.location.href = url + pageindex + pager.pageIndex;
+			}
+		});
+	</script>
+	<script type="text/javascript">
+	
+	function read(e){
+		var id = $(e).attr("data");
+		$.post("?c=Message&act=read",{
+		id:id},function(data){
+			
+		},"json");
+		$(e).css("color","#d6d4d4");
+	}
+</script>
+<script type="text/javascript">
+	function del(id)
+	{ 
+		if (confirm("确定要删除这条数据吗？"))
+			$.post("?c=Message&act=del",{
+				id:id},function(data){
+					if(data)
+						location="?c=Message";
+				})
+			
+	}
+</script>
+</form>
+</div>
+</div>
+ {include file = 'Public/footer.html'}
+

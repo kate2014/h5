@@ -1,0 +1,34 @@
+{nickName: "淋", gender: 2, language: "zh_CN", city: "", province: ""…}
+{nickName: "淋", gender: 2, language: "zh_CN", city: ""}
+{nickName: "淋", gender: 2, language: "zh_CN", city: ""}
+{nickName: "淋", gender: 2, language: "zh_CN", city: ""}
+{nickName: "淋", gender: 2, language: "zh_CN", city: ""}
+
+
+
+
+
+
+
+
+
+
+
+res
+{"errMsg":"getUserInfo:ok","rawData":"{\"nickName\":\"淋\",\"gender\":2,\"language\":\"zh_CN\",\"city\":\"\",\"province\":\"\",\"country\":\"Andorra\",\"avatarUrl\":\"https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83erEqibmZotpme0wTF6JO8pvtj2KgoNmZERevagjb5qy9MKTwAbLxyFNBjXqibAF2HhHBT89JPBtDalQ/0\"}","userInfo":{"nickName":"淋","gender":2,"language":"zh_CN","city":"","province":"","country":"Andorra","avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83erEqibmZotpme0wTF6JO8pvtj2KgoNmZERevagjb5qy9MKTwAbLxyFNBjXqibAF2HhHBT89JPBtDalQ/0"},"signature":"8929eaf0ee822b843994a081d1c372a38587a614","encryptedData":"7GKpUyP8X7PYPrugx2dyDUnON/l4/80Y5/nlD5r3rsuqu6cdlMVHWaJ6WCnxBvZKxxQq+a3ztU7/6bj6W9eNOOHZjcUzr57Hefi2GHGvqOns0nkybY7ybagpf7OyxciuFmhR+z3F2E7PUmJOHQpfwVc1s+0OeMhQ5opq3HA5/xr/t+xVgbeFg0q42+3tXzvshbUrYFB0EZNtiZYJN1lMASUvl9rkLwEF8CMWSatISHFt9ShohoQ+AlTH/dW+iD2gX39eI56mVfRnrQJb8W4H9WjwrkPvhNqXZtGDu4W/9XvZrX2CruZN4BjWw7vmBABeHRkguFac3THgZuvcQ+6k9UITtQfID6hO8nqMP/8HhU5LIllvwPzmJEA7eGDI00kKRptpfbQyZ3UzX2aWPyAqDBeYOjLownp977DQ+AwzhjbKhG0yUNZsfv8962FDgZLhs2uHj6mNjsk1ZUq2Gt6hvw==","iv":"Zm8f3VqSIWl/1kBrjIPW4w=="}
+
+
+
+
+{"nickName":"淋","gender":2,"language":"zh_CN","city":"","province":"","country":"Andorra","avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83erEqibmZotpme0wTF6JO8pvtj2KgoNmZERevagjb5qy9MKTwAbLxyFNBjXqibAF2HhHBT89JPBtDalQ/0"}
+{"nickName":"淋","gender":2,"language":"zh_CN","city":"","province":"","country":"Andorra","avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83erEqibmZotpme0wTF6JO8pvtj2KgoNmZERevagjb5qy9MKTwAbLxyFNBjXqibAF2HhHBT89JPBtDalQ/0"}
+{"nickName":"淋","gender":2,"language":"zh_CN","city":"","province":"","country":"Andorra","avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83erEqibmZotpme0wTF6JO8pvtj2KgoNmZERevagjb5qy9MKTwAbLxyFNBjXqibAF2HhHBT89JPBtDalQ/0"}
+{"nickName":"淋","gender":2,"language":"zh_CN","city":"","province":"","country":"Andorra","avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83erEqibmZotpme0wTF6JO8pvtj2KgoNmZERevagjb5qy9MKTwAbLxyFNBjXqibAF2HhHBT89JPBtDalQ/0"}
+{"nickName":"淋","gender":2,"language":"zh_CN","city":"","province":"","country":"Andorra","avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83erEqibmZotpme0wTF6JO8pvtj2KgoNmZERevagjb5qy9MKTwAbLxyFNBjXqibAF2HhHBT89JPBtDalQ/0"}
+{"nickName":"淋","gender":2,"language":"zh_CN","city":"","province":"","country":"Andorra","avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83erEqibmZotpme0wTF6JO8pvtj2KgoNmZERevagjb5qy9MKTwAbLxyFNBjXqibAF2HhHBT89JPBtDalQ/0"}
+{"nickName":"淋","gender":2,"language":"zh_CN","city":"","province":"","country":"Andorra","avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83erEqibmZotpme0wTF6JO8pvtj2KgoNmZERevagjb5qy9MKTwAbLxyFNBjXqibAF2HhHBT89JPBtDalQ/0"}
+{"nickName":"淋","gender":2,"language":"zh_CN","city":"","province":"","country":"Andorra","avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83erEqibmZotpme0wTF6JO8pvtj2KgoNmZERevagjb5qy9MKTwAbLxyFNBjXqibAF2HhHBT89JPBtDalQ/0"}
+{"nickName":"淋","gender":2,"language":"zh_CN","city":"","province":"","country":"Andorra","avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83erEqibmZotpme0wTF6JO8pvtj2KgoNmZERevagjb5qy9MKTwAbLxyFNBjXqibAF2HhHBT89JPBtDalQ/0"}
+{"nickName":"淋","gender":2,"language":"zh_CN","city":"","province":"","country":"Andorra","avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83erEqibmZotpme0wTF6JO8pvtj2KgoNmZERevagjb5qy9MKTwAbLxyFNBjXqibAF2HhHBT89JPBtDalQ/0"}
+Array
+Array

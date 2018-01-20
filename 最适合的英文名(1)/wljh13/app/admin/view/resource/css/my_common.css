@@ -1,0 +1,104 @@
+@charset="utf-8";
+/* pop */
+#pop{background:#fff;width:260px;border:1px solid #e0e0e0;font-size:12px;position:fixed;right:10px;bottom:10px;}
+#popHead{line-height:32px;background:#f6f0f3;border-bottom:1px solid #e0e0e0;position:relative;font-size:12px;padding:0 0 0 10px;}
+#popHead h2{font-size:14px;color:#666;line-height:32px;height:32px;margin: 0;}
+#popHead #popClose{position:absolute;right:10px;top:1px;}
+#popHead a#popClose:hover{color:#f00;cursor:pointer;}
+#popContent{padding:5px 10px;}
+#popTitle a{line-height:24px;font-size:14px;font-family:'微软雅黑';color:#333;font-weight:bold;text-decoration:none;}
+#popTitle a:hover{color:#f60;}
+#popIntro{text-indent:24px;line-height:160%;margin:5px 0;color:#666;}
+#popMore{text-align:right;border-top:1px dotted #ccc;line-height:24px;margin:8px 0 0 0;}
+#popMore a{color:#f60;}
+#popMore a:hover{color:#f00;}
+.mt-8{margin-top:8px;}
+
+.windowsdialog .dialog-word li{list-style-type: none;};
+.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"]{margin-left: 0;}
+.form-horizontal .radio{padding-top:0;padding-right:5px;}
+@media(max-width:767px)
+{
+    #yw{display:none}
+}
+
+
+
+ul.sidebar-menu li.my_static{text-align:left;text-indent:35px;color:#fff;height:auto;font-size:20px;
+background-color:#242a32;padding:0;height:60px;line-height:60px;}
+
+table.dataTable thead > tr > th{padding:8px;}
+
+.dtb_btn_1{width:60px;}
+.dtb_btn_2{width:120px;}
+.dtb_btn_3{width:180px;}
+.dtb_btn_4{width:2400px;}
+.dtb_btn{padding-right:5px;}
+
+.p-t-7{padding-top:7px;}
+.p-t-7 label{margin-bottom:0;font-weight:norma;}
+
+.form-group label{font-weight:normal;}
+.form-group .control-label{font-weight:700;}
+.form-control-static label{padding-right:10px;}
+
+.form-control{padding:6px 6px;}
+.input-mini{width:40px;}
+.input-small{width:100px;}
+.width-auto{width:auto !important;}
+
+.green{color:green;}
+.red{color:red;}
+
+
+
+/*分销规则，粉丝返现树*/
+#tree tr td {
+padding: 10px 25px;
+font-size: 12px;
+min-width:35px;
+white-space: nowrap;
+text-align:center;
+}
+.cj td {
+background: url(../images/treecj.jpg) center no-repeat;
+background-size: auto 100%;
+filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/treecj.jpg',sizingMethod='scale');
+}
+.fxz td {
+background: url(../images/treefxz.jpg) center no-repeat;
+background-size: auto 100%;
+filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/treefxz.jpg',sizingMethod='scale');
+}
+.gmz td {
+background: url(../images/treegmz.jpg) center no-repeat;
+background-size: auto 100%;
+filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/treegmz.jpg',sizingMethod='scale');
+}
+
+#tree th{font-weight:normal;height:50px;padding-right:10px;}
+#tree td{border:0;}
+
+/*分销规则，代理商返佣*/
+table#tab2 {
+border-top: 1px solid #ddd;
+border-left: 1px solid #ddd;
+text-align: left;
+}
+#tab2 table tr th {
+text-align:center;
+border: 1px solid #ddd;
+padding: 10px 15px;
+font-size: 12px;
+text-align: left;
+}
+.tbt_dj{padding:10px;}
+#tab2 th, #tab2 td{padding:10px;border-right:#ddd 1px solid;border-bottom:#ddd 1px solid;
+white-space: nowrap; 
+}
+.nowrap{white-space:nowrap;}
+
+.green{color:green}
+.yellow{color:yellow}
+.orange{color:orange}
+.red{color:red}

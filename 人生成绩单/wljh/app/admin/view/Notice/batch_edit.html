@@ -1,0 +1,93 @@
+{include file = 'Public/header.html'}
+<form name="aspnetForm" method="post" action="?c=Notice&act=batch_save&type={$type}"
+	id="aspnetForm">
+
+	<div class="panel panel-default" style="margin-top: 15px;">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<i class="fa fa-cubes"></i>
+				批量修改商品
+			</h3>
+		</div>
+		<!--数据列表区域-->
+		<div id="panel-collapse-4" class="collapse in" style="height: auto;">
+			<div class="panel-body">
+				{if isset($success)}
+				<div
+					class="alert alert-success alert-block fade in alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert"
+						aria-hidden="true">×</button>
+					<strong>{$success}</strong>
+				</div>
+				{/if} {if isset($failed)}
+				<div
+					class="alert alert-danger alert-block fade in alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert"
+						aria-hidden="true">×</button>
+					<strong>{$failed}</strong>
+				</div>
+				{/if}
+				<div class="table-responsive">
+					<div class="dataTables_wrapper form-inline">
+						<table cellspacing="0" border="0"
+							style="width: 100%; border-collapse: collapse;"
+							class="table table-th-block table-hover dataTable">
+							<thead>
+								<tr class="table_title">
+									<th style="padding: 8px; width: 80px">商品图片</th>
+									<th style="padding: 8px">商品名称</th>
+									{if $type=="nameAndCate"}
+									<th style="padding: 8px; width: 80px">商品分类</th>
+									{else}
+									<th style="padding: 8px; width: 80px">库存</th>
+									{/if}
+								</tr>
+							</thead>
+							<tbody id="tbodytext">
+								{if $rslist} {foreach $rslist as $value}
+								<tr>
+									<input type="hidden" name="id[]" value="{$value['id']}">
+									<td>
+										<img alt="{$value['name']}" src="{$value['thumb']}" width="40"
+											height="40">
+									</td>
+									<td>
+										{if $type=="nameAndCate"}
+										<input name="name[]" type="text" class="form-control wh"
+											value="{$value['name']}">
+										{else} {$value['name']} {/if}
+									</td>
+									<td>
+										{if $type=="nameAndCate"}
+										<select name="cate_id[]" class="form-control">
+											<option value="0">请选择分类</option>
+											{if $cate_list}
+											 {foreach $cate_list as $k=>$v}
+											<option value="{$v['id']}" {if $value['cate_id']==$v['id']} selected{/if}>{$v["space"]}{$v["name"]}</option>
+											{/foreach} {/if}
+										</select>
+										{else}
+										<input type="text" name="inventory[]"
+											value="{$value['inventory']}">
+										{/if}
+									</td>
+								</tr>
+								{/foreach} {/if}
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-offset-4 col-md-9">
+						<input type="submit" value="保存" onclick="return PageIsValid();"
+							id="ctl00_contentHolder_btnSaveInfo" class="btn btn-primary">
+						<a href="?c=Notice" class="btn btn-default">返回</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+</div>
+</div>
+{include file = 'Public/footer.html'}

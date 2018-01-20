@@ -1,0 +1,65 @@
+<?php /* Smarty version Smarty-3.1.18, created on 2016-07-26 15:41:17
+         compiled from "app\mobi\webview\Public\footer.html" */ ?>
+<?php /*%%SmartyHeaderCode:254915797141d28a589-52369527%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '792a217c525cdc8f4a5517cb1bdb805f149b50ae' => 
+    array (
+      0 => 'app\\mobi\\webview\\Public\\footer.html',
+      1 => 1469516753,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '254915797141d28a589-52369527',
+  'function' => 
+  array (
+  ),
+  'variables' => 
+  array (
+    'tpl_path' => 0,
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.18',
+  'unifunc' => 'content_5797141d29de06_53982409',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_5797141d29de06_53982409')) {function content_5797141d29de06_53982409($_smarty_tpl) {?><!--底部开始-->
+	<div class="footer">
+		<div class="foot">
+			<div class="foot_l">
+				<div class="foot_nav">
+					<ul>
+						<li><a href="?c=NoticeList&act=about&id=5">关于我们</a>|</li>
+						<li><a href="?c=NoticeList&act=about&id=6">联系我们</a>|</li>
+						<li><a href="?c=NoticeList&id=2">众筹问答</a>|</li>
+						<li><a href="?c=NoticeList&act=about&id=7">用户协议</a>|</li>
+						<li><a href="?c=NoticeList&act=about&id=8">免责声明</a></li>
+						<div class="clear"></div>
+					</ul>
+				</div>
+				<div class="foot_c">
+					<span>Copyright © 2004-2016 三才实业发展有限公司 版权所有</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>投资有风险，购买需谨慎</span>
+				</div>
+			</div>
+			<div class="foot_r">
+				<div class="qrcode">
+					<img src="<?php echo $_smarty_tpl->tpl_vars['tpl_path']->value;?>
+resource/images/qrcode.png">
+					<span>微信公众号</span>
+				</div>
+				<div class="rx">
+					<p>客服热线(工作日 9:00~18:00)</p>
+					<h2>400-823-8833</h2>
+				</div>
+				<div class="qq">
+					<p>在线客服&nbsp;<span>(工作日 9:00~18:00)</span></p>
+					<a href=""><img src="<?php echo $_smarty_tpl->tpl_vars['tpl_path']->value;?>
+resource/images/qq_btn_2.png"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+		<!--底部结束-->
+</body>
+</html>
+<?php }} ?>

@@ -1,0 +1,65 @@
+{include file='Public/head.html'}
+<div class="main_head">
+	<h2 class="left main_head_title"> 
+		<a href="?c={$c}">用户管理</a> - 
+		添加/编辑
+	</h2>
+	<div class="right">
+		<a href="?c={$c}&act=index" class="btn btn_add">查看列表</a>
+	</div>
+</div>
+<div class="main_head_bg"></div>
+<!--主体内容 begin-->
+<div class="main_body">
+    <form action="?c=admin&act=save" method="post" onsubmit="return checkform()">
+	<table class="edit_table">
+		<tbody>
+			<tr>
+				<td><span class="td_tit">用户名：</span>{$rs['username']}</td>
+			</tr>
+			<tr>
+				<td><span class="td_tit">密码：</span>
+					<input name="password" value="" type="text" class="input_normal" />
+					<span class="td_tip">如果不修改密码请留空</span>
+				</td>
+			</tr>
+			<tr>
+				<td><span class="td_tit">序列号：</span>
+					<input name="sn" value="{$rs['sn']}" type="text" class="input_normal" />
+                    <span class="td_tip"></span>
+                </td>
+			</tr>
+			<tr>
+				<td><span class="td_tit">真实姓名：</span>
+					<input name="real_name" value="{$rs['real_name']}" type="text" class="input_normal" /></td>
+			</tr>
+			<tr>
+				<td><span class="td_tit">状态：</span>
+					<label><input name="status" value="1" type="radio" {if $rs['status']}checked{/if} /> 启用</label>&nbsp;&nbsp;
+					<label><input name="status" value="0" type="radio" {if !$rs['status']}checked{/if} /> 禁用</label>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top"><span class="td_tit">备注信息：</span>
+					<textarea name="note" class="note">{$rs['note']}</textarea>
+				</td>
+			</tr>
+			<tr>
+				<td><input type="hidden" name="id" value="{$rs['id']}" />
+					<div class="pad_left_a"><input type="submit" value=" 提 交 " class="submit" /></div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+    </form>
+</div>
+<!--主体内容 end-->
+<script type="text/javascript">
+	function CheckForm(){
+		if($("input[name='real_name']").val()==""){
+			alert("真是姓名不能为空");
+			return false;
+		}
+	}
+</script>
+{include file='Public/foot.html'}

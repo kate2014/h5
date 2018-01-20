@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width,user-scalable=no" />
+	<meta name="format-detection" content="telephone=no, email=no" />
+	<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+	<title>最适合的英文名</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.main h1 {
+			font-size: 20px;
+			color: #fff;
+			text-align: center;
+			padding: 3% 0;
+			background: #18b4ed;
+		}
+		.main img {
+			width: 100%;
+		}
+		.tip {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			margin-top: -75px;
+			margin-left: -75px;
+			width: 150px;
+			height: 150px;
+			background: rgba(0,0,0,0.5);
+			display: none;
+			border-radius: 10px;
+		}
+		.tip img {
+			width: 60px;
+			height: 60px;
+			margin: 20px 45px 0;
+		}
+		.tip p {
+			font-size: 16px;
+			color: #fff;
+			text-align: center;
+			line-height: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<h1>长按保存图片分享好友</h1>
+		<div class="img">
+			<img class="funny-img" src="" alt="">
+		</div>
+	</div>
+	</div>
+		<div class="tip">
+		<img src="" alt="">
+		<p></p>
+	</div>
+
+</body>
+</html>
+<script type="text/javascript">
+//获取地址栏参数//可以是中文参数
+function getUrlParam(key) {
+    // 获取参数
+    var url = window.location.search;
+    // 正则筛选地址栏
+    var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+    // 匹配目标参数
+    var result = url.substr(1).match(reg);
+    //返回参数值
+    return result ? decodeURIComponent(result[2]) : null;
+}
+console.log(getUrlParam('name'))
+console.log(getUrlParam('gender'))
+console.log(getUrlParam('cate_id'))
+</script>
+<script>
+    /*var share_t = "2018年你会靠什么吃饭？";
+     var share_d = '一秒测出2018年你会靠什么吃饭？';
+     var link = "" ? "" : "http://t.kinpyoo.cn/index.php/r/fbmPgXLnma";
+     var share_img = "http://wx.wpart.cn//uploads/s/snhpft1505529697/7/9/7/a/5a37c7121c94f.jpg";
+     var error_flag = 0;
+     wx.error(function() {
+     error_flag = 1;
+     })
+     wx.ready(function() {
+     if(!error_flag) {
+     //setWxData(share_t, share_d, link, share_img);
+     }
+     })*/
+    $('.tip').show();
+	$('.tip').children('img').attr('src','./images/gantan.png');
+	$('.tip').children('p').html('图片拼命合成中...');
+	// 随机结果图片路径
+    if(getUrlParam('gender')==2){
+        var result_src="./images/"+Math.ceil(Math.random()*30)+'.png';
+    }else {
+        var result_src="./images/"+Math.ceil(Math.random()*20+30)+'.png';
+    }
+    // 公众号名字
+    var qr_name = '';
+    // 公众号图片路径
+    var qr_src = '';
+    var info = {
+        name: getUrlParam('name') || "",//姓名
+        portrait: "",//头像
+        double_two: "",//双输入框2
+        res: "",//结果图片
+        title: ""//结果标题
+    }
+    // info.res = "http://wx.wpart.cn//uploads/s/snhpft1505529697/8/2/0/d/5a37c3cce0eed.jpg";
+
+    // info.res = './images/11.jpg';
+    info.title = "";
+    var tit = "一秒测出%name最适合的英文名？";
+    if(tit.indexOf("%name") >= 0){
+        tit = tit.replace("%name",info.name);
+    }
+    if(tit.indexOf("%result") >= 0){
+        tit = tit.replace("%result",info.title);
+    }
+    document.title = tit;
+
+    var cvs = document.createElement("canvas");
+    var ctx = cvs.getContext("2d");
+    var bg,pt,qr,scan_src="",draw_flag=0,scan_flag=0;
+    var w = "";
+    var h = "";
+
+
+    $.get("http://kao.5268w.com/app.php?c=Message&act=woksm", {
+		"name": getUrlParam('name'),
+		"content": result_src,
+        "gender": getUrlParam('gender'),
+		"cate_id": getUrlParam('cate_id'),	
+		},
+		function(data, status) {
+
+				$('.tip').hide();
+				qr_name = data.erwgzh;
+				qr_src = 'http://img3.imgtn.bdimg.com/it/u=3639082178,3763666109&fm=27&gp=0.jpg';
+				info.res = result_src;
+				console.log(data);
+				draw();
+
+	
+	},"json");
+
+    function draw() {
+        //获取微信头像
+        getScanSrc();
+        drawCvs();
+    }
+
+    function drawOther(){
+        //名字
+        if(info.name != ""){
+            drawWord("#fff xy(463,105) 48 simhei 0 中 bold",info.name + "最适合的英文名");
+        }
+        //额外文字1
+                // drawWord("#fff xy(70,150) 50 simhei 0 中 bolder",info.name +"【2017·2018】")
+                //额外文字2
+                // drawWord("#444e57 xy(550,975) 35 simhei 0 右 bolder","测试请搜索公众号："+ qr_name)
+            }
+    function getScanSrc(){
+
+        if('0' == '1'){
+            $.get('/index.php?g=Wap&m=Outerapi&a=get_ad_sale&id=166831',function(r){
+                var res = $.parseJSON(r);
+                if(res.status == 1001 && res.data){
+                    scan_src = res.data.ad_img || qr_src;
+                }
+                scan_flag=1;
+                drawQr();
+            })
+        }else{
+            if(location.href.indexOf("wx")==7){
+                var domain_arr = window.location.host.split('.');
+                $.get('/index.php?g=Wap&m=Outerapi&a=get_wxuser_qrimg&game_id=100140&string='+domain_arr[0],function(r){
+                    var res = $.parseJSON(r);
+                    if(res.status == 1001){
+                        scan_src = res.data || qr_src;
+                    }
+                    scan_flag=1;
+                    drawQr();
+                })
+            }else{
+                if(parseInt(scan_src,10)){
+                    $.get('/index.php?g=Wap&m=Outerapi&a=get_scan_src&src='+scan_src,function(data){
+                        scan_src = data || qr_src;
+                        scan_flag=1;
+                        drawQr();
+                    })
+                }else{
+                    scan_src = qr_src;
+                    scan_flag=1;
+                    drawQr();
+                }
+            }
+        }
+    }
+
+    function drawQr(){
+        if(!scan_flag||!draw_flag){
+            return;
+        }
+        if(scan_src){
+            qr = new Image();
+            qr.crossOrigin="Anonymous";
+            qr.onload = function(){
+                var obj = imgPara("xy(600,520)","110","110","0");
+                //画二维码
+                ctx.rotate(obj.rot * Math.PI / 180);//旋转角度
+                ctx.drawImage(qr,obj.x,obj.y,obj.w,obj.h);
+                ctx.rotate(-obj.rot * Math.PI / 180);//调整旋转起点
+                datasToPng();
+            }
+            qr.src = scan_src;
+        }else{
+            datasToPng();
+        }
+    }
+
+    function drawCvs(){
+        bg = new Image();
+        bg.crossOrigin="Anonymous";
+        bg.onload = function() {
+            w = bg.width;
+            h = bg.height;
+            cvs.width = w;
+            cvs.height = h;
+            ctx.fillStyle = "#fff";
+            ctx.fillRect(0, 0, w, h);
+            //画背景图
+            if("否"!="是"){
+                ctx.drawImage(bg, 0, 0, w, h);
+            }
+            //画头像
+            if(info.portrait != "") {
+                initPortraitImg(info.portrait);
+            } else{
+                drawOther();
+                draw_flag=1;
+                drawQr();
+            }
+
+        }
+        bg.src = info.res;
+    }
+
+    function initPortraitImg(src){
+        var portrait = new Image();
+        if(src.indexOf("http") == 0){
+            portrait.crossOrigin="Anonymous";
+        }
+        portrait.onload = function() {
+            var obj = imgPara("","140","140","0");
+            var pl = 0;
+            var pt = 0;
+            var pw = portrait.width;
+            var ph = portrait.height;
+            if(pw / obj.w > ph / obj.h){
+                pw = obj.w * (ph / obj.h);
+                pl = (portrait.width - pw) / 2;
+            } else{
+                ph = obj.h * (pw / obj.w);
+                pt = (portrait.height - ph) / 2;
+            }
+            ctx.rotate(obj.rot * Math.PI / 180);//旋转角度
+            ctx.drawImage(portrait,pl,pt,pw,ph,obj.x,obj.y,obj.w,obj.h);
+            ctx.rotate(-obj.rot * Math.PI / 180);//调整旋转起点
+            if("否"=="是"){
+                ctx.drawImage(bg, 0, 0, w, h);
+            }
+            drawOther();
+            draw_flag=1;
+            drawQr();
+        }
+        portrait.src = src;
+    }
+
+    function imgPara(str1,str2,str3,rot){
+        var pos = str1.replace("xy(", "");
+        pos = pos.replace(")", "");
+        pos = pos.split(",");
+        var obj = {
+            x: pos[0],
+            y: pos[1],
+            w: str2,
+            h: str3,
+            rot: rot
+        }
+        return obj;
+    }
+
+    function drawWord(str,words) {
+        if(str) {
+            var str_arr = str.split(" ");
+            var color = str_arr[0];
+            var pos = str_arr[1];
+            pos = pos.replace("xy(", "");
+            pos = pos.replace(")", "");
+            pos = pos.split(",");
+            var x = pos[0];
+            var y = pos[1];
+            var size = str_arr[2];
+            var family = str_arr[3];
+            var rot = str_arr[4];
+            var weight = str_arr[6];
+            var obj = {
+                color: color,
+                x: parseFloat(x),
+                y: parseFloat(y),
+                size: size,
+                family: family,
+                rot: rot,
+                weight: weight
+            }
+            ctx.fillStyle = obj.color;//字体颜色
+            var wg = obj.weight + " ";
+            ctx.font = wg + obj.size + "px " + obj.family;//字体样式
+            ctx.rotate(obj.rot * Math.PI / 180);//旋转角度
+            ctx.textAlign = "left";
+            if(str_arr[5] == "中"){
+                obj.x = w / 2;
+                ctx.textAlign = "center";
+            }
+            if(str_arr[5] == "右"){
+                ctx.textAlign = "right";
+            }
+            ctx.textBaseline = "bottom";
+            ctx.fillText(words, obj.x, obj.y);
+            ctx.rotate(-obj.rot * Math.PI / 180);//调整旋转起点
+        }
+    }
+
+    function datasToPng(){
+        $(".load_").hide();
+        var imgdata = cvs.toDataURL("image/png");
+        $('.funny-img').attr('src',imgdata).show();
+        if("0" == 1){
+            if (window.innerHeight) {
+                var winH = window.innerHeight;
+                var winW = window.innerWidth;
+            } else if ((document.body) && (document.body.clientHeight)){
+                var winH = document.body.clientHeight;
+                var winW = document.body.clientWidth;
+            }
+            if(w / h < winW / ( winH - 120 )) {
+                $(".funny-img").height(winH * 0.8 + "px");
+                var left = winW - (winH * 0.8 * (w / h));
+                $(".funny-img").css("margin-left",left / 2);
+            }
+        }
+        $('.funny-img').attr('src',imgdata);
+        /*var post_data = {
+         img:imgdata
+         }
+         $.post("/index.php?g=Wap&m=Outerapi&a=baseToImg",post_data,function(data){
+         var d = $.parseJSON(data).data;
+         if(d && d.indexOf("http") == -1){
+         d = "http://wx.y1y.me"+d.split(".")[1]+"."+d.split(".")[2];
+         }
+         var img = new Image();
+         img.onload = function(){
+         $('.funny-img').attr('src',d);
+         }
+         img.src = d.replace("wx.y1y.me",document.domain);
+         })*/
+    }
+</script>

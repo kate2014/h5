@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>2018你的对象最有可能出现在哪里</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="" name="Keywords">
+    <meta name="description" content="“">
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+
+    <style type="text/css">
+        body, html {
+            height: 100%;
+            text-align: center;
+        }
+        #output2 {
+            width: auto;
+            position: static;
+            z-index: 3;
+            opacity: 1;
+            max-width:90%;
+        }
+        .btn {
+            position: static;
+            width: 100%;
+            width: 60%;
+            margin: 0 20%;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" style="display:none" width="720" height="1000">
+</canvas>
+<canvas id="canvasRadar" style="position:absolute;left:-999px" width="300" height="300">
+</canvas>
+<img id="output"/>
+<img id="output2"/>
+<div id="qrcode"></div>
+<img class="btn" id="save" src="./images/btn2.png"/>
+<script type="text/javascript" src="./js/zepto.js"></script>
+<script type="text/javascript" src="./js/Zepto.cookie.js"></script>
+
+<script type="text/javascript">
+    var font_size=12,font_color="#666";
+    if("12,#4b4945"&&("12,#4b4945".indexOf(",")!=-1)){
+        var arr="12,#4b4945".split(",");
+        font_size=parseInt(arr[0],10);
+        font_color=arr[1];
+    }
+</script>
+<script type="text/javascript">
+//获取地址栏参数//可以是中文参数
+function getUrlParam(key) {
+    // 获取参数
+    var url = window.location.search;
+    // 正则筛选地址栏
+    var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+    // 匹配目标参数
+    var result = url.substr(1).match(reg);
+    //返回参数值
+    return result ? decodeURIComponent(result[2]) : null;
+}
+console.log(getUrlParam('name'))
+console.log(getUrlParam('cate_id'))
+</script>
+<script type="text/javascript" src="./js/Chart.js"></script>
+<script type="text/javascript">
+    var COOK_NAME = "df_168207";
+    var COOK_NAME2 = "df_168207_key";
+    var qr_img='';
+    (function(){
+        var word_arr=["暴食","色欲","强欲","愤怒","懒惰","傲慢","嫉妒"];
+        var weight_arr=[0,0,0,0,0,0,0];
+        var point_arr=[];
+        if(""){
+            word_arr=[
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ];
+            weight_arr=[
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ];
+        }else{
+            if(parseInt("47",10)>0){
+                word_arr=[
+                                    "奥特星球",
+                                "成都",
+                                "蓝翔技校",
+                                "世纪佳缘",
+                                "自家楼上",
+                                "微信好友",
+                                "对面楼上",
+                                "酒吧",
+                                "滑雪场",
+                                "亲戚介绍",
+                                "迪拜",
+                                "电视上",
+                                "皮革厂",
+                                "同学会",
+                                "点赞的",
+                                "公司",
+                                "公园",
+                                "氪星球",
+                                "咖啡厅",
+                                "朋友圈",
+                                "二姨家",
+                                "三亚",
+                                "卷纸",
+                                "还没出生",
+                                "屋顶",
+                                "火锅店",
+                                "寻人启事",
+                                "罗马",
+                                "你手里",
+                                "网吧",
+                                "发廊",
+                                "地铁",
+                                "烧烤摊",
+                                "三里屯",
+                                "菜市场",
+                                "老家",
+                                "图书馆",
+                                "健身房",
+                                "穿红衣",
+                                "游泳池",
+                                "老家",
+                                "神州12号",
+                                "上海外滩",
+                                "豪宅",
+                                "洗手间",
+                                "火锅店",
+                                "停车场",
+                            ];
+                weight_arr=[
+                                                    0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                                                0,
+                                            ];
+            }
+        }
+        function getArrayItems(arr, num) {
+            //新建一个数组,将传入的数组复制过来,用于运算,而不要直接操作传入的数组;
+            var temp_array = new Array();
+            for (var index in arr) {
+                temp_array.push(arr[index]);
+            }
+            //取出的数值项,保存在此数组
+            var return_array = new Array();
+            for (var i = 0; i<num; i++) {
+                //判断如果数组还有可以取出的元素,以防下标越界
+                if (temp_array.length>0) {
+                    //在数组中产生一个随机索引
+                    var arrIndex = Math.floor(Math.random()*temp_array.length);
+                    //将此随机索引的对应的数组元素值复制出来
+                    return_array[i] = temp_array[arrIndex];
+                    //然后删掉此索引的数组元素,这时候temp_array变为新的数组
+                    temp_array.splice(arrIndex, 1);
+                } else {
+                    //数组中数据项取完后,退出循环,比如数组本来只有10项,但要求取出20项.
+                    break;
+                }
+            }
+            return return_array;
+        }
+        if(word_arr&&word_arr.length>7){
+            word_arr=getArrayItems(word_arr,7);
+        }
+        point_arr=getPoint();
+        function getPoint(){
+            var points = [];
+            for(var i=0;i<7;i++){
+                var p=Math.floor(Math.random()*7);
+                if(p==6){
+                    p=10;
+                }
+                points.push(p);
+            }
+            console.log(points);
+            return points;
+        }
+        // if(window.localStorage){
+        //     if(localStorage[COOK_NAME]==""||!localStorage[COOK_NAME]){
+        //         localStorage[COOK_NAME]=word_arr.join(",");
+        //     }else{
+        //         word_arr=localStorage[COOK_NAME].split(",");
+        //     }
+        //     if(localStorage[COOK_NAME2]==""||!localStorage[COOK_NAME2]){
+        //         localStorage[COOK_NAME2]=point_arr.join(",");
+        //     }else{
+        //         point_arr=localStorage[COOK_NAME2].split(",");
+        //     }
+        // }
+
+        var wait_flag=0;
+        var draw_flag=0;
+        var cvs3,ctx3,cvs4,cxt4;
+        var portrait_src="",portrait_flag=0,draw_flag2=0;
+        var draw = function(){
+            if(""||(""&&"110"&&"")){
+                getPortrait();
+            }else{
+                portrait_flag=1;
+            }
+            draw_flag=1;
+            var c=document.getElementById("canvas");
+            var cxt=c.getContext("2d");
+            var img = document.createElement('img')
+            img.crossOrigin = "Anonymous";
+            img.onload = function(e) {
+                c.width=img.width;
+                c.height=img.height;
+                cxt.drawImage(img, 0, 0, img.width, img.height);
+                var img3 = document.createElement('img');
+                img3.crossOrigin = "Anonymous";
+                img3.onload = function(e) {
+                    if("#ffffff xy(300,22) 56 simhei 0 中 bold"){
+                        var para=strToPara("#ffffff xy(300,22) 56 simhei 0 中 bold",name + "");
+                        drawWord(para,c,cxt);
+                    }else{
+                        var font_size2=50,font_color2="#006bd1";
+                        if(""&&("".indexOf(",")!=-1)){
+                            var arr="".split(",");
+                            font_size2=parseInt(arr[0],10);
+                            font_color2=arr[1];
+                        }
+                        cxt.font = font_size2+"px PingFangSC-Semibold";
+                        cxt.fillStyle=font_color2;
+                        var namepx = cxt.measureText(name).width;
+                        var namex = (720 - namepx - 363)/2;
+                        var imagex = namex + namepx+20;
+                        cxt.drawImage(img3,imagex, 60, 363, 33);
+                        cxt.fillText(name, namex, 90);
+                    }
+                    var fillColor="#f2f2f2"?"rgba("+getRgb("#f2f2f2")+",0.5)":"rgba(0,121,212,0.5)";
+                    var strokeColor="#00b0f0"?"rgba("+getRgb("#00b0f0")+",1)":"rgba(0,121,212,1)";
+                    var pointColor="#0070c0"?"#0070c0":"#0079D4";
+
+                    var d=document.getElementById("canvasRadar");
+                    var cxt2=d.getContext("2d");
+                    var data = {
+                        labels : word_arr,
+                        datasets : [
+                            {
+                                fillColor : fillColor,
+                                strokeColor : strokeColor,
+                                pointColor : pointColor,
+                                pointStrokeColor : "#fff",
+                                data : point_arr
+                            }
+                        ]
+                    }
+                    var lineColor="#f2f2f2" || "rgba(0,0,0,0.1)";
+                    var radarPara={
+                        animation : false,
+                        scaleOverride:true,
+                        scaleShowLine:true,
+                        scaleStartValue:0,
+                        scaleStepWidth:1,
+                        scaleLineColor : lineColor,
+                        scaleLineWidth : 1,
+                        scaleShowLabels : false,
+                        scaleSteps:5,
+                        angleLineColor : lineColor
+                    }
+                    new Chart(cxt2).Radar(data,radarPara);
+                    var y = 190;
+                    if(window.devicePixelRatio==3){
+                        y= 150;
+                    }
+                    //画雷达图
+                    if("xy(60,270)"){
+                        var pos=checkPos("xy(60,270)");
+                        cxt.drawImage(d,pos.x,pos.y);
+                    }else{
+                        cxt.drawImage(d, 60, y);
+                    }
+
+                    var dataUrl = c.toDataURL();
+                    document.getElementById("output").src = dataUrl;
+
+                    //画二维码
+                    var img =new Image();
+                    img.crossOrigin = "Anonymous";
+                    img.onload=function(){
+                        if("xy(298,850)"&&"120"){
+                            var size=parseInt("120",10);
+                            var pos=checkPos("xy(298,850)");
+                            cxt.drawImage(img,pos.x,pos.y,size,size);
+                        }else{
+                            cxt.drawImage(img, (720-128)/2 , 1000 -128 -30,130,130);
+                        }
+
+                        cvs4=c;
+                        cxt4=cxt;
+                        draw_flag2=1;
+                        drawEnd();
+                    }
+                    img.src=qr_img;
+
+                }
+                img3.src = './images/no_know1.png';
+            };
+            img.src = './images/bg2.png';
+        }
+        function getRgb(str){
+            var arr=[],s;
+            for(var i=0;i<3;i++){
+                s=str.substring(2*i+1,2*i+3);
+                arr.push(parseInt(s,16));
+            }
+            return arr.join(",");
+        }
+
+        function getPortrait(){
+            var wxHeadImgUrl = "";
+            if (wxHeadImgUrl) {
+                $.get("/index.php?g=Wap&m=Outerapi&a=getHeadIcon&url="+encodeURIComponent(wxHeadImgUrl), function(data, status, xhr){
+                    if (status == "success" && data.length > 0) {
+                        var d = $.parseJSON(data)
+                        var imgData = d.data;
+                        portrait_src = imgData;
+                        if("否"=="是"){
+                            cvs3=document.createElement("canvas");
+                            ctx3=cvs3.getContext("2d");
+                            var img=new Image();
+                            img.onload=function(){
+                                var tmp_w=Math.max(img.width,img.height);
+                                cvs3.width=tmp_w;
+                                cvs3.height=tmp_w;
+                                var pattern = ctx3.createPattern(img,"no-repeat");
+                                ctx3.roundRect(0, 0,tmp_w,tmp_w, tmp_w*0.5 || 0);
+                                ctx3.fillStyle = pattern;
+                                ctx3.fill();
+                                portrait_src=cvs3;
+                                portrait_flag=1;
+                                drawEnd();
+                            }
+                            img.src=portrait_src;
+                        }else{
+                            portrait_flag=1;
+                            drawEnd();
+                        }
+                    }
+                });
+            }else if(""&&"110"&&""){
+                cvs3=document.createElement("canvas");
+                ctx3=cvs3.getContext("2d");
+                var img=new Image();
+                img.crossOrigin="Anonymous";
+                img.onload=function(){
+                    var tmp_w=Math.max(img.width,img.height);
+                    cvs3.width=tmp_w;
+                    cvs3.height=tmp_w;
+                    var pattern = ctx3.createPattern(img,"no-repeat");
+                    ctx3.roundRect(0, 0,tmp_w,tmp_w, tmp_w*0.5 || 0);
+                    ctx3.fillStyle = pattern;
+                    ctx3.fill();
+                    portrait_src=cvs3;
+                    portrait_flag=1;
+                    drawEnd();
+                }
+                img.src="";
+            }
+        }
+        function drawEnd(){
+            if(!portrait_flag||!draw_flag2){
+                return;
+            }
+            if(portrait_src){
+                var size=parseInt("110",10);
+                var pos=checkPos("");
+                cxt4.drawImage(cvs3,pos.x,pos.y,size,size);
+                datasToPng();
+            }else{
+                datasToPng();
+            }
+
+        }
+        function drawWord(val,c,ctx){
+            var w=c.width;
+            var arr = [];
+            var x = val.pos.x;
+            var y = val.pos.y;
+            var name = val.name;
+            ctx.rotate(val.rot*Math.PI/180);
+            var wg = "";
+            var wt = 0;
+            if(val.weight){
+                wg = val.weight+" ";
+            }
+            ctx.fillStyle=val.color;
+            ctx.font=wg+val.size+"px "+val.family;
+            wt = ctx.measureText(name).width;
+            ctx.textBaseline = "top";
+            if(val.align=="middle"){
+                x = (w-wt)*0.5;
+            }else if(val.align=="right"){
+                x = x-wt;
+            }else if(val.indent){
+                //左对齐 有锁进
+                x = x+val.indent*val.size;
+            }
+            if(val.len){
+                if(name.length>val.len){
+                    arr = strToArr(name,val.len*2,val.indent);
+                    for(var i=0;i<arr.length;i++){
+                        if(i==0){
+                            ctx.fillText(arr[i],x,y);
+                            y+=val.size+5;
+                        }else{
+                            if(val.indent){
+                                ctx.fillText(arr[i],x-val.indent*val.size,y);
+                                y+=val.size+5;
+                            }else{
+                                ctx.fillText(arr[i],x,y);
+                                y+=val.size+5;
+                            }
+                        }
+                    }
+                }
+            }else{
+                ctx.fillText(name,x,y);
+            }
+            ctx.rotate(-val.rot*Math.PI/180);
+        }
+        function strToPara(str,words){
+            if(str){
+                str_arr = str.split(" ");
+                if(str_arr.length >= 5){
+                    var name = words;
+                    var color = str_arr[0];
+                    var pos = str_arr[1];
+                    var size = str_arr[2];
+                    var family = str_arr[3];
+                    var rot = str_arr[4];
+                    var align;
+                    var weight = "normal";
+                    var indent=0;
+                    var len = 0;
+                    var direction = "";
+                    if(str_arr.length == 5){
+                        align = "left";
+                    }else{
+                        align = str_arr[5];
+                        if(align.indexOf("中")!=-1){
+                            align = "middle";
+                        }else if(align.indexOf("右")!=-1){
+                            align = "right";
+                        }else{
+                            align = "left";
+                        }
+                        if(str_arr.length >= 7){
+                            weight = str_arr[6];
+                        }
+                        if(str_arr.length >= 8){
+                            indent = str_arr[7];
+                        }
+                        if(str_arr.length >= 9){
+                            len = str_arr[8];
+                        }
+                        if(str_arr.length >= 10){
+                            direction = (str_arr[9]=="vertical")?"vertical":"";
+                        }
+                    }
+                    color = check(color)?color:"#000000";
+                    pos = checkPos(pos);
+                    size = (check(size)&&parseInt(size,10))?parseInt(size,10):20;
+                    family = check(family)?family:"simsun";
+                    rot = (check(rot)&&parseInt(rot,10))?parseInt(rot,10):0;
+                    weight = (weight=="bold"||weight=="bolder")?weight:"normal";
+                    indent = checkEm(indent);
+                    len = checkEm(len);
+                    var obj = {
+                        name:name,
+                        color:color,
+                        pos:pos,
+                        size:size,
+                        family:family,
+                        rot:rot,
+                        align:align,
+                        weight:weight,
+                        indent:indent,
+                        len:len,
+                        direction:direction
+                    }
+                    return obj;
+                }
+            }
+            return false;
+        }
+        function check(str){
+            if(str&&(str!="0")){
+                if(str.replace(/ /g,"")){
+                    return true;
+                }
+                //alert("输入内容不能为空！");
+                return false;
+            }
+        }
+        function checkEm(str){
+            if(check(str)){
+                str = str.replace("em","");
+                if(parseInt(str,10)){
+                    return parseInt(str,10);
+                }
+            }
+            return 0;
+        }
+        function checkPos(str){
+            var pos={
+                x:20,
+                y:10
+            }
+            if(str.indexOf(",")!=-1){
+                str = str.replace("xy(","");
+                str = str.replace(")","");
+                var pos_arr = str.split(",")
+                if(pos_arr.length==2){
+                    var xx = parseInt(pos_arr[0],10);
+                    var yy = parseInt(pos_arr[1],10);
+                    pos={
+                        x:xx,
+                        y:yy
+                    }
+
+                }
+
+            }
+            return pos;
+        }
+        CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
+            var min_size = Math.min(w, h);
+            r = min_size / 2;
+            //if (r > min_size / 2) r = min_size / 2;
+            // 开始绘制
+            this.beginPath();
+            this.moveTo(x + r, y);
+            this.arcTo(x + w, y, x + w, y + h, r);
+            this.arcTo(x + w, y + h, x, y + h, r);
+            this.arcTo(x, y + h, x, y, r);
+            this.arcTo(x, y, x + w, y, r);
+            this.closePath();
+            return this;
+        }
+        function datasToPng(){
+            var imgdata = cvs4.toDataURL("image","png");
+            document.getElementById("output2").src=imgdata;
+            if("0"== "1"){
+                $("#output2").css("max-height","75%");
+            }else{
+                $("#output2").css("max-height","90%");
+            }
+            var uploadUrl = "/index.php?g=Wap&m=Outerapi&a=baseToImg";
+            var send = {
+                img:imgdata,
+            }
+            $.post(uploadUrl,send,function(data){
+                var d = $.parseJSON(data);
+                var dd = (d.data);
+                if(dd&&dd.indexOf("http")==-1){
+                    dd = "http://wx.y1y.me"+dd.split(".")[1]+"."+dd.split(".")[2];
+                }
+                var img = new Image();
+                img.onload=function(){
+                    document.getElementById("output2").src=dd;
+                }
+                img.src=dd;
+            })
+        }
+
+        // var qr_img="http://img3.imgtn.bdimg.com/it/u=3639082178,3763666109&fm=27&gp=0.jpg";
+
+        if(parseInt(qr_img,10)){
+            wait_flag=1;
+             $.get("app.php?c=Message&act=woksm", {
+                "name": getUrlParam('name'),
+                "cate_id": getUrlParam('cate_id'),  
+                },
+                function(data, status) {
+
+                        qr_img = data.erwurl;
+                        console.log(data);
+                        draw();
+
+
+            
+            },"json");
+        }
+        
+        $.urlParam = function(name) {
+            var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            if (results) {
+                return results[1];
+            } else {
+                return 0;
+            }
+        };
+        var getByteLen = function (val) {
+            var len = 0;
+            for (var i = 0; i < val.length; i++) {
+                if (val[i].match(/[^x00-xff]/ig) != null) //全角
+                    len += 2;
+                else
+                    len += 1;
+            };
+            return len;
+        }
+        
+
+        var name = decodeURIComponent($.urlParam("name"));
+        if(!name || getByteLen(name)>10){
+            window.location.href="index.html";
+            return;
+        }
+
+        if(Zepto.fn.cookie("name") ==name){
+            $("#save").show();
+        }else{
+            $("#output").hide();
+        }
+        $("#canvasRadar").attr("width",600/window.devicePixelRatio);
+        $("#canvasRadar").attr("height",600/window.devicePixelRatio);
+        var addWeight=function(arr){
+            var sum=eval(weight_arr.join("+"));
+            if(sum<=0){
+                return arr;
+            }
+            var re=[];
+            for(var i=0;i<7;i++){
+                var obj={
+                    key:i,
+                    weight:weight_arr[i]
+                }
+                re.push(obj);
+            }
+            re.sort(getSortFun('desc', 'weight'));
+            arr.sort(getSortFun('desc','number'));
+            for(var i=0;i<7;i++){
+                re[i].point=arr[i];
+            }
+            re.sort(getSortFun('asc','key'));
+            for(var i=0;i<7;i++){
+                arr[i]=re[i].point;
+            }
+            return arr;
+
+            function getSortFun(order, sortBy) {
+                var ordAlpah = (order == 'asc') ? '>' : '<';
+                if(sortBy=="number"){
+                    var sortFun = new Function('a', 'b', 'return a'+ ordAlpah + 'b' + '?1:-1');
+                }else{
+                    var sortFun = new Function('a', 'b', 'return a.' + sortBy + ordAlpah + 'b.' + sortBy + '?1:-1');
+                }
+                return sortFun;
+            }
+        }
+        var width = window.screen.width;
+        if(!wait_flag){
+             $.get("app.php?c=Message&act=woksm", {
+                "name": getUrlParam('name'),
+                "cate_id": getUrlParam('cate_id'),  
+                },
+                function(data, status) {
+
+                        qr_img = data.erwurl;
+                        console.log(data);
+                        draw();
+
+
+            
+            },"json");
+        }
+    })();
+
+</script>
+</body>
+</html>

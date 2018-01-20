@@ -1,0 +1,561 @@
+登录：http://192.9.200.115/lhyt/Api/Login/Login/  POST : account=用户&password=密码    注：密码采用MD5加密方式
+返回：
+      {
+         "username"："用户",
+         "nickname":"用户昵称",
+         "user_id":"用户id",
+         "msg":"提示",
+         "success":true
+      }
+注册：http://192.9.200.115/lhyt/Api/Register/Reg/  POST : account=用户&password=密码&phone=手机&email=邮箱    注：密码采用MD5加密方式
+返回：
+      {
+         "username"："用户",
+         "nickname":"用户昵称",
+         "user_id":"用户id",
+         "msg":"提示",
+         "success":true
+      }  
+首页：http://192.9.200.115/lhyt/Api/Index/Index/
+返回：
+      {
+         "carousel"：[{//轮播图片
+         "id":"id号","pic":"图片地址"
+         },{
+         "id":"id号","pic":"图片地址"
+         }],
+         "cate"：[{//分类
+         "id":"id号","name":"名称","thumb":"图片地址"
+         },{
+         "id":"id号","name":"名称","thumb":"图片地址"
+         }],
+         "msg":"提示",
+         "success":true
+      }
+搜索：http://192.9.200.115/lhyt/Api/Search/Index/  POST : s=搜索内容&page=页数&order=(sort-price:价格排序,sort-added:时间排序)&set=(0:顺序,1:逆序)
+返回：
+      {
+         "search_list"：[{
+         "id":"id号","sale_price":"价格","name":"商品名称","thumb":"商品图片"
+         },{
+         "id":"id号","sale_price":"价格","name":"商品名称","thumb":"商品图片"
+         }],
+         "search_num"："查询数量",
+         "search_s"："查询内容名称",
+         "msg":"提示",
+         "success":true
+      }       
+分类页：http://192.9.200.115/lhyt/Api/Goodslist/Index/  POST : cate=分类id&page=页数
+返回：
+      {
+         "goods_list":[{
+         "id":"id号","sale_price":"价格","name":"商品名称","thumb":"商品图片"
+         },{
+         "id":"id号","sale_price":"价格","name":"商品名称","thumb":"商品图片"
+         }],
+         "msg":"提示",
+         "success":true
+      }     
+商品页：http://192.9.200.115/lhyt/Api/Goods/Index/  POST : id=商品id
+返回：
+      {
+         "goods":[{"id":"商品id",
+                   "name":"商品名称",
+                   "cate_id":"商品分类id",
+                   "price":"原价",
+                   "sales_volume":"销量",
+                   "content":[".\/uploads\/20150305\/14255406565084.jpg","","","",""],
+                   "thumb":"商品小图",
+                   "pictures":[".\/uploads\/20150305\/14255406565084.jpg","","","",""],//相册5个
+                   "status":"是否上架",
+                   "sort":"0:不折扣,1:折扣",
+                   "hot":"0:不推荐,1:推荐",
+                   "top":"0::不置顶,1::置顶",
+                   "sale":"0:不特价,1:特价",
+                   "click":"商品点击数",
+                   "is_distribution":"是否启用分销，1启用；0不启用",
+                   "is_indie_rule":"是否是独立的分销规则",
+                   "weight":"商品重量",
+                   "is_point":"0：不启用积分购买，1：启用积分购买",
+                   "sale_price":"价格",
+                   "point"："可获得积分"}],
+         "msg":"提示",
+         "success":true
+      }  
+购物车：http://192.9.200.115/lhyt/Api/Buy/Index/
+返回：
+      {
+         "goods_list":[{//购物车商品
+         "id":"id号","sale_price":"价格","name":"商品名称","thumb":"商品图片"
+         },{"id":"id号","sale_price":"价格","name":"商品名称","thumb":"商品图片"
+         }],
+         "msg":"提示",
+         "success":true
+      }
+购物车商品删除：http://192.9.200.115/lhyt/Api/Buy/Index/ POST : del=1&id=商品id（多个1,2,3,4,）
+返回：
+      {
+         "msg":"提示",
+         "success",true
+      }
+购物车商品添加：http://192.9.200.115/lhyt/Api/Buy/Index/ POST : id=商品id&num=购买商品数量
+返回：
+      {
+         "msg":"提示",
+         "success",true
+      }
+退出：http://192.9.200.115/lhyt/Api/Login/Logout/ 
+返回：
+      {
+         "msg":"提示",
+         "success",true
+      }
+
+购物车商品确定购买 ： http://192.9.200.115/lhyt/Api/Buy/Buy/ POST : id=new
+订单id号确定 ： http://192.9.200.115/lhyt/Api/Buy/Buy/ POST : id=订单id      
+订单单商品快速购买 ： http://192.9.200.115/lhyt/Api/Buy/Buy/ POST : gid=商品id&buyNum=购买商品数量
+返回：
+{
+    "regions_list1": [
+        {//地址列表1
+            "id": "id号",
+            "name": "地名"
+        },
+        {
+            "id": "id号",
+            "name": "地名"
+        }
+    ],
+    "regions_list2": [
+        {//地址列表2
+            "id": "id号",
+            "name": "地名"
+        },
+        {
+            "id": "id号",
+            "name": "地名"
+        }
+    ],
+    "regions_list3": [
+        {//地址列表3
+            "id": "id号",
+            "name": "地名"
+        },
+        {
+            "id": "id号",
+            "name": "地名"
+        }
+    ],
+    "total_price": "统计总价",
+    "payment_list": [
+        {//支付选项列表
+            "id": "id号",
+            "title": "支付名称"
+        },
+        {
+            "id": "id号",
+            "title": "支付名称"
+        }
+    ],
+    "freight_list": [
+        {//快递选项列表
+            "id": "id号",
+            "f_name": "快递名称"
+        }
+    ],
+    "order": [{//订单详细
+        "id": "订单id号",
+        "order_sn": "订单号",
+        "user_id": "下单用户id",
+        "order_note": "下单备注",
+        "status": "状态，1正常，0无效订单",
+        "add_time": "下单时间（时间）",
+        "state": "进度。 1，未提交（未付款）； 2，待发货； 3，已发货； 4，已完成；",
+        "total_price": "订单总价",
+        "pay_type_id": "支付方式id",
+        "consignee_name": "收货人",
+        "delivery_area": "收货地址",
+        "phone": "手机号码",
+        "freight_id": "快递id",
+        "freight_price": "快递费用",
+        "freight_weight": "订单重量",
+        "freight": "快递订单号"
+    }],
+    "userinfo": [{
+        "id": "用户id",
+        "username": "用户名",
+        "password": "密码",
+        "openid": "微信用户对应公众号唯一id",
+        "nickname": "微信昵称",
+        "avatars": "用户头像,对应微信headimgurl",
+        "sex": "性别，0-保密；1-男；2-女",
+        "city": "城市,对应微信city",
+        "fullname": "真实姓名",
+        "birthday": "生日,1900-12-12",
+        "phone": "电话",
+        "regions": null,
+        "regions1": "所在区域，省",
+        "regions2": "所在区域,市",
+        "regions3": "所在区域,区县",
+        "address": "地址",
+        "email": "邮箱",
+        "status": "用户状态是否审核通过，0为禁止，1为通过",
+        "reg_time": 注册时间,
+        "last_login_time": "最后登录时间",
+        "last_login_ip": "最后登录ip",
+        "remark": "微信用户备注名",
+        "qq": "QQ",
+        "type": "1，注册会员；2，微信会员",
+        "cate": "外键，客户分类，。user_cate表",
+        "points": "积分",
+        "subscribe": "0"
+    }],
+    "goods_list": [
+        {//购物车商品
+            "id": "id号",
+            "sale_price": "价格",
+            "name": "商品名称",
+            "thumb": "商品图片"
+        },
+        {
+            "id": "id号",
+            "sale_price": "价格",
+            "name": "商品名称",
+            "thumb": "商品图片"
+        }
+    ],
+    "msg": "提示",
+    "success": true
+}
+订单列表：http://192.9.200.115/lhyt/Api/UserOrder/Index/ POST : state=1(订单状态分类id)  1 => '等待买家付款', 2 => '等待卖家发货', 3 => '等待买家收货', 4 => '订单已完成'
+返回：
+{
+    "order_list":[{//订单详细
+        "id": "订单id号",
+        "order_sn": "订单号",
+        "user_id": "下单用户id",
+        "order_note": "下单备注",
+        "status": "状态，1正常，0无效订单",
+        "add_time": "下单时间（时间）",
+        "state": "进度。 1，未提交（未付款）； 2，待发货； 3，已发货； 4，已完成；",
+        "total_price": "订单总价",
+        "pay_type_id": "支付方式id",
+        "consignee_name": "收货人",
+        "delivery_area": "收货地址",
+        "phone": "手机号码",
+        "freight_id": "快递id",
+        "freight_price": "快递费用",
+        "freight_weight": "订单重量",
+        "freight": "快递订单号"
+    },{
+        "id": "订单id号",
+        "order_sn": "订单号",
+        "user_id": "下单用户id",
+        "order_note": "下单备注",
+        "status": "状态，1正常，0无效订单",
+        "add_time": "下单时间（时间）",
+        "state": "进度。 1，未提交（未付款）； 2，待发货； 3，已发货； 4，已完成；",
+        "total_price": "订单总价",
+        "pay_type_id": "支付方式id",
+        "consignee_name": "收货人",
+        "delivery_area": "收货地址",
+        "phone": "手机号码",
+        "freight_id": "快递id",
+        "freight_price": "快递费用",
+        "freight_weight": "订单重量",
+        "freight": "快递订单号"
+    }],
+    "title":"订单列表名称",
+    "msg":"提示",
+    "success":true
+
+}
+
+订单详细：http://192.9.200.115/lhyt/Api/UserOrder/view/ POST : id=订单id
+返回：
+{
+    "order":[{//订单详细
+        "id": "订单id号",
+        "order_sn": "订单号",
+        "user_id": "下单用户id",
+        "order_note": "下单备注",
+        "status": "状态，1正常，0无效订单",
+        "add_time": "下单时间（时间）",
+        "state": "进度。 1，未提交（未付款）； 2，待发货； 3，已发货； 4，已完成；",
+        "total_price": "订单总价",
+        "pay_type_id": "支付方式id",
+        "consignee_name": "收货人",
+        "delivery_area": "收货地址",
+        "phone": "手机号码",
+        "freight_id": "快递id",
+        "freight_price": "快递费用",
+        "freight_weight": "订单重量",
+        "freight": "快递订单号"
+    }],
+    "msg":"提示",
+    "success":true
+
+}
+
+订单删除：http://192.9.200.115/lhyt/Api/UserOrder/closedOrder/ POST : id=订单id
+返回：
+{
+
+    "msg":"提示",
+    "success":true
+
+}
+订单确定收货：http://192.9.200.115/lhyt/Api/UserOrder/receive/ POST : id=订单id
+返回：
+{
+
+    "msg":"提示",
+    "success":true
+
+}
+
+个人中心：http://192.9.200.115/lhyt/Api/User/Index/
+{
+	"userinfo":[{
+		"id":"用户id",
+		"username":"用户名",
+		"password":"密码",
+		"openid":"微信用户对应公众号唯一id",
+		"nickname":"微信昵称",
+		"avatars":"用户头像,对应微信headimgurl",
+		"sex":"性别，0-保密；1-男；2-女",
+		"city":"城市,对应微信city",
+		"fullname":"真实姓名",
+		"birthday":"生日,1900-12-12",
+		"phone":"电话",
+		"regions":null,
+		"regions1":"所在区域，省",
+		"regions2":"所在区域,市",
+		"regions3":"所在区域,区县",
+		"address":"地址",
+		"email":"邮箱",
+		"status":"用户状态是否审核通过，0为禁止，1为通过",
+		"reg_time":注册时间,
+		"last_login_time":"最后登录时间",
+		"last_login_ip":"最后登录ip",
+		"remark":"微信用户备注名",
+		"qq":"QQ",
+		"type":"1，注册会员；2，微信会员",
+		"cate":"外键，客户分类，。user_cate表",
+		"points":"积分",
+		"subscribe":"0"
+	}],
+	"order":[{
+		"daif":"未付款订单数量",
+		"dais":"已发货订单数量"
+	}],
+	"msg":"提示",
+	"success":true
+}
+
+个人信息：http://192.9.200.115/lhyt/Api/User/profile/
+{
+	"regions_list1":[{
+		"id":"id号",
+		"name":"地名"
+		},{
+		"id":"id号",
+		"name":"地名"
+		}],
+	"regions_list2":[{
+		"id":"id号",
+		"name":"地名"
+		},{
+		"id":"id号",
+		"name":"地名"
+		}],
+	"regions_list3":[{
+		"id":"id号",
+		"name":"地名"
+		}],
+	"userinfo":[{
+		"id":"用户id",
+		"username":"用户名",
+		"password":"密码",
+		"openid":"微信用户对应公众号唯一id",
+		"nickname":"微信昵称",
+		"avatars":"用户头像,对应微信headimgurl",
+		"sex":"性别，0-保密；1-男；2-女",
+		"city":"城市,对应微信city",
+		"fullname":"真实姓名",
+		"birthday":"生日,1900-12-12",
+		"phone":"电话",
+		"regions":null,
+		"regions1":"所在区域，省",
+		"regions2":"所在区域,市",
+		"regions3":"所在区域,区县",
+		"address":"地址",
+		"email":"邮箱",
+		"status":"用户状态是否审核通过，0为禁止，1为通过",
+		"reg_time":注册时间,
+		"last_login_time":"最后登录时间",
+		"last_login_ip":"最后登录ip",
+		"remark":"微信用户备注名",
+		"qq":"QQ",
+		"type":"1，注册会员；2，微信会员",
+		"cate":"外键，客户分类，。user_cate表",
+		"points":"积分",
+		"subscribe":"0"
+	}],
+	"msg":"提示",
+	"success":true
+}
+
+我的地址：http://192.9.200.115/lhyt/Api/User/prolists/
+{
+	"regions_list1":[{
+		"id":"id号",
+		"name":"地名"
+		},{
+		"id":"id号",
+		"name":"地名"
+		}],
+	"regions_list2":[{
+		"id":"id号",
+		"name":"地名"
+		},{
+		"id":"id号",
+		"name":"地名"
+		}],
+	"regions_list3":[{
+		"id":"id号",
+		"name":"地名"
+		}],
+	"userinfo":[{
+		"id":"用户id",
+		"username":"用户名",
+		"password":"密码",
+		"openid":"微信用户对应公众号唯一id",
+		"nickname":"微信昵称",
+		"avatars":"用户头像,对应微信headimgurl",
+		"sex":"性别，0-保密；1-男；2-女",
+		"city":"城市,对应微信city",
+		"fullname":"真实姓名",
+		"birthday":"生日,1900-12-12",
+		"phone":"电话",
+		"regions":null,
+		"regions1":"所在区域，省",
+		"regions2":"所在区域,市",
+		"regions3":"所在区域,区县",
+		"address":"地址",
+		"email":"邮箱",
+		"status":"用户状态是否审核通过，0为禁止，1为通过",
+		"reg_time":注册时间,
+		"last_login_time":"最后登录时间",
+		"last_login_ip":"最后登录ip",
+		"remark":"微信用户备注名",
+		"qq":"QQ",
+		"type":"1，注册会员；2，微信会员",
+		"cate":"外键，客户分类，。user_cate表",
+		"points":"积分",
+		"subscribe":"0"
+	}],
+	"msg":"提示",
+	"success":true
+}
+银行卡信息：http://192.9.200.115/lhyt/Api/User/bank/
+{
+	"bank":[{
+		"id":"银行帐户id",
+		"user_id":"用户id",
+		"account_name":"银行卡用户名",
+		"account":"银行卡号",
+		"bank_name":"银行名称",
+		"branch_bank":"银行支行名称",
+		"sort":"排序"
+
+	}],
+	"msg":"提示",
+	"success":true
+}
+支付宝信息：http://192.9.200.115/lhyt/Api/User/alipay/
+{
+	"alipay":[{
+		"id":"支付宝id",
+		"user_id":"用户id",
+		"account_name":"支付宝用户名",
+		"account":"支付宝帐号",
+		"sort":"排序"
+
+	}],
+	"msg":"提示",
+	"success":true
+}
+修改我的地址：http://192.9.200.115/lhyt/Api/User/profiles/  POST : fullname=真实名称&regions1=省&regions2=市&regions3=区&address=地址&phone=电话&user_id=用户id
+{
+	"msg":"提示",
+	"success":true
+}
+删除我的地址：http://192.9.200.115/lhyt/Api/User/del/  POST : id=地址id
+{
+	"msg":"提示",
+	"success":true
+}
+设置我的地址：http://192.9.200.115/lhyt/Api/User/set/  POST : id=地址id&status=状态
+{
+	"msg":"提示",
+	"success":true
+}
+设置个人信息：http://192.9.200.115/lhyt/Api/User/profileDo/  POST : fullname=真实名称&sex=姓名&birthday=生日&regions1=省&regions2=市&regions3=区&address=地址&phone=电话&id=用户id
+{
+	"msg":"提示",
+	"success":true
+}
+设置支付宝：http://192.9.200.115/lhyt/Api/User/alipayDo/  POST : account_name=支付宝用户名&account=支付宝帐号&user_id=用户id
+{
+	"msg":"提示",
+	"success":true
+}
+设置银行卡：http://192.9.200.115/lhyt/Api/User/bankDo/  POST : account_name=银行卡用户名&bank_name=银行名称&branch_bank=银行支行名称&account=银行卡号&user_id=用户id
+{
+	"msg":"提示",
+	"success":true
+}
+待评价：http://cnjm.com/Api/Kefu/orderlist/  
+{"notcommentlist":[{"goods_id":商品id,"order_id":订单id,"thumb":"商品图片","name":"商品名称","price":"商品价格"}],"msg":"成功","success":true}
+
+已评价：http://cnjm.com/Api/Kefu/showlist/ 
+{"iscommentlist":[{"content":内容,"time":时间,"goods_id":商品id,"order_id":订单id,"thumb":"商品图片","name":"商品名称","price":"商品价格"}],"msg":"成功","success":true}
+插入评价：http://cnjm.com/Api/Kefu/insertlist/   POST       orderid=订单id&goodsid=商品id&content=内容
+收藏：http://cnjm.com/Api/Shoucang/index/   POST   goodsid=商品id
+收藏列表：http://cnjm.com/Api/Shoucang/shoucangLists/
+{"collectList":[{"id":"商品id","thumb":"商品图片","name":"商品名称","price":"商品价格"}],"msg":"提示","success":true}
+上传图像：http://cnjm.com/Api/User/getImage/    POST     str=图片字符串&name=图片名字
+{
+	"msg":"提示",
+	"success":true
+}
+个人中心：http://cnjm.com/Api/User/grzx/{
+	"pic":"头像",
+	"phone":"手机",
+	"nickname":"昵称",
+	"msg":"提示",
+	"success":true
+}
+作品：http://cnjm.com/Api/Praise/index/         POST     page=页数
+{"goodsList":[{"id":"商品id","name":"商品名称","thumb":"商品图片","praise":"商品点赞"}],"msg":"提示","success":true}
+点赞：http://cnjm.com/Api/Praise/dianzan/      POST  goodsid=商品id
+{
+      status:"点赞状态";
+      msg:"提示";
+      success:true;
+}
+插入评论：http://cnjm.com/Api/Praise/insertds/      POST  goodsid=商品id&content=评论内容
+{
+      msg:"提示";
+      success:true;
+}
+查看评论：http://cnjm.com/Api/Praise/seecomment/      POST  goodsid=商品id&page=页数
+{"commentlist":[{"cid":商品id,"pid":"评论内容","time":评论时间,"avatars":"头像","nickname":"昵称"}],"msg":"提示","success":true}
+商品大图：http://cnjm.com/Api/Praise/lunbotu/       POST  goodsid=商品id
+{"goodsid":273,"praise":"3","discuss":"2","msg":"\u6210\u529f","success":true}
+联系我们：http://cnjm.com/Api/Praise/contact/       
+{
+	  msg:"提示";
+      success:true;
+}

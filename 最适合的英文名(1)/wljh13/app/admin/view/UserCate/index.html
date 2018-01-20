@@ -1,0 +1,152 @@
+{include file = 'Public/header.html'}
+<form name="aspnetForm" method="post" action="?c={$c}" id="aspnetForm" >
+<div class="panel panel-default" style="margin-top:15px;">
+<div class="panel-heading">
+<h3 class="panel-title">
+<i class="fa fa-cubes"></i>
+分类列表
+</h3>
+</div>
+<div id="panel-collapse-4" class="collapse in" style="height: auto;">
+<div class="panel-body">
+		<div class="alert alert-success alert-block fade in alert-dismissable" id="alert" style=" display:none;">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+						<strong>操作成功</strong>
+		</div>
+<div id="divmsg"></div>
+<div class="btn-toolbar top-table" style="margin-bottom:0px" role="toolbar">
+	<div class="btn-group">
+		<a  class="btn  btn-default" href="?c={$c}&act=add">
+			<i class="fa fa-plus"></i>
+			添加
+		</a>
+	</div>
+	<div class="btn-group">
+		<a  class="btn  btn-default" href="javascript:void(0)" id="btnSort">
+			<i class="fa fa-reorder"></i>
+			排序
+		</a>
+	</div>
+	<div class="btn-group hide">
+		<a id="ctl00_contentHolder_lbtnExport" class="btn  btn-default" href="javascript:__doPostBack('ctl00$contentHolder$lbtnExport','')">
+			<i class="fa fa-sign-out"></i>
+			导出
+		</a>
+	</div>
+	<div class="btn-group" style="display:none">
+		<a  class="btn  btn-default" href="ProductCategoryImpor.html">
+			<i class="icon-long-arrow-left"></i>
+			导入
+		</a>
+	</div>
+</div>
+<div class="table-responsive">
+	<div class="dataTables_wrapper form-inline">
+		<table cellpadding="0" cellspacing="0" class="table table-th-block table-hover dataTable" >
+			<thead>
+				<tr class="diplayth1">
+					<th style="padding-left:8px;width: 60px;">排序字段</th>
+					<th style="padding-left:8px;width: 60px;">是否启用</th>
+					<th style="padding-left:8px;">分类名称</th>
+					<th style="padding-left:8px; width:180px">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+			{if $rslist}
+			{foreach $rslist as $key=>$value}
+				<tr>
+					<td class="xdise">
+						<input name="id[]" type="hidden" id="ctl00_contentHolder_rptProductCategory_ctl00_hdDisplaySequence" value="{$value['id']}" />
+						<input name="sort[]" type="text" id="ctl00_contentHolder_rptProductCategory_ctl00_txtDisplaySequence" style="width:40px;" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" value="{$value['sort']}" />
+					</td>
+					<td><input id="status" type="checkbox" name="status" {if $value["status"]} checked{/if} /></td>
+					<td>{$value["name"]}</td>
+					<td>
+						<a href='?c={$c}&act=edit&id={$value['id']}' class="btn-default">
+							<i class="fa fa-edit"></i>
+							编辑
+						</a>
+						&nbsp;&nbsp;
+						<a id="ctl00_contentHolder_rptProductCategory_ctl00_lbtnDel" class="btn-default" href="javascript:del({$value['id']})">
+							<i class="fa fa-trash-o"></i>
+							删除
+						</a>
+					</td>
+				</tr>
+				{/foreach}
+				{/if}
+
+
+			</tbody>
+		</table>
+	</div>
+</div>
+</div>
+</div>
+</div>
+
+</form>
+</div>
+</div>
+<script type="text/javascript">
+	function del(id)
+	{ 
+		if (confirm("确定要删除这条数据吗？"))
+			$.post("?c={$c}&act=del",{
+				id:id},function(data){
+					if(!data)
+						location="?c={$c}";	
+					else
+						alert(data);
+				})
+			
+	}
+</script>
+
+<script type="text/javascript">
+	  $(function(){
+	        //是否显示
+           $('input[type=checkbox]').unbind("click").click(function(){
+                 var outurlIsFalse=false;
+                if(!$(this).is(":checked"))
+                {
+                    outurlIsFalse=false;
+                }
+                else
+                {
+                    outurlIsFalse=true;
+                }
+                var data = {
+                      "Id":$(this).parent().find(".xbos").val(),
+                      "outurlIsFalse":outurlIsFalse,
+                      "Action": "UpdateRecommend"
+                  }
+                fuajax(data);
+            });
+            //排序
+            $("#btnSort").unbind("click").click(function(){
+            	var id=[],sort=[];
+        		$("[name='id[]']").each(function(i){
+        			id[i]=$(this).val();
+        		})
+        		$("[name='sort[]']").each(function(i){
+        			sort[i]=$(this).val();
+        		}) 
+               	$.post("?c={$c}&act=ajax_sort",{
+               		id:id,sort:sort
+               	},
+               	function(data){
+               		if(!isNaN(data))
+					{
+						$("#alert").show().addClass("alert-success").removeClass("alert-danger").find("strong").text(str);
+					}
+					else
+					{
+						$("#alert").show().addClass("alert-danger").removeClass("alert-success").find("strong").text("操作失败!");
+					}		
+               	})
+            });
+    });
+	
+	</script>
+ {include file = 'Public/footer.html'}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width,user-scalable=no" />
+	<meta name="format-detection" content="telephone=no, email=no" />
+	<title>最适合的英文名</title>
+	<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			background: #f2f2f2;
+		}
+		.main h1 {
+			font-size: 18px;
+			padding: 25px 0 15px;
+			text-align: center;
+			color: #ff7241;
+		}
+		.thumb img {
+			display: block;
+			width: 88%;
+			margin: 0 auto 30px;
+
+		}
+		.main label{
+		    padding: 2%;
+		    font-size: 18px;
+		    width: 86%;
+		    margin: 10px 5%;
+		    border-radius: 2px;
+		    /*line-height: 30px;*/
+		}
+		.main input[type="radio"] {
+			margin-right:5px;
+			width: 20px;
+			height: 20px;
+			vertical-align: text-top;
+		}
+		.main input[type="text"]{
+			display: block;
+		    background-color: #FFFFFF;
+		    border: 1px solid #d0d0d0;
+		    padding: 2%;
+		    font-size: 18px;
+		    width: 86%;
+		    margin: 10px 5%;
+		    border-radius: 2px;
+		}
+		.main input[type="button"] {
+			display: block;
+		    background-color: #ff7241;
+		    padding: 2%;
+		    font-size: 18px;
+		    color: #fff;
+		    width: 90%;
+		    margin: 10px auto;
+		    border-radius: 5px;
+		    border: 0 none;
+		}
+		.tip {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			margin-top: -75px;
+			margin-left: -75px;
+			width: 150px;
+			height: 150px;
+			background: rgba(0,0,0,0.5);
+			display: none;
+			border-radius: 10px;
+		}
+		.tip img {
+			width: 60px;
+			height: 60px;
+			margin: 20px 45px 0;
+		}
+		.tip p {
+			font-size: 16px;
+			color: #fff;
+			text-align: center;
+			line-height: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<h1>最适合的英文名</h1>
+		<div class="thumb">
+			<img src="./images/thumb.jpg" alt="">
+		</div>
+		<form action="">
+			<label><input name="gender" type="radio" value="1" />我是男生</label>
+			<label><input name="gender" type="radio" value="2" />我是女生</label>
+			<input id="name" type="text" placeholder="请输入名字">
+			<input id="submit" type="button" value="开始">
+		</form>
+	</div>
+		<div class="tip">
+		<img src="" alt="">
+		<p></p>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+//获取地址栏参数//可以是中文参数
+function getUrlParam(key) {
+    // 获取参数
+    var url = window.location.search;
+    // 正则筛选地址栏
+    var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+    // 匹配目标参数
+    var result = url.substr(1).match(reg);
+    //返回参数值
+    return result ? decodeURIComponent(result[2]) : null;
+}
+
+
+</script>
+<script>
+	$('#submit').on('click',function(){
+		console.log($("input[type='radio']:checked").val())
+		if($('#name').val()==''){
+			$('.tip').show();
+			$('.tip').children('img').attr('src','./images/gantan.png')
+			$('.tip').children('p').html('请输入姓名')
+			setTimeout(function(){
+				$('.tip').hide();
+			},2000)
+			return false;
+		}
+		if(!$("input[type='radio']:checked").val()){
+			$('.tip').show();
+			$('.tip').children('img').attr('src','./images/gantan.png')
+			$('.tip').children('p').html('请选择性别')
+			setTimeout(function(){
+				$('.tip').hide();
+			},2000)
+			return false;
+		}
+		if(getUrlParam('cate_id')){
+			var cate_id = getUrlParam('cate_id');
+		}else {
+			var cate_id = 1;
+		}
+		console.log(cate_id)
+
+		window.location.href = './result.html?cate_id='+cate_id+'&name='+encodeURIComponent($('#name').val())+'&gender='+$("input[type='radio']:checked").val();
+
+	})
+
+</script>

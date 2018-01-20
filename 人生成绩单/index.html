@@ -1,0 +1,419 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+	<meta content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+
+
+	<script src="./js/jquery-3.2.1.js"></script>
+	<script type="text/javascript" src="./js/layer_mobile/layer.js"></script>
+	<title>人生成绩单</title>
+	<style>
+		/*@font-face{font-family:ZT;src: url('img/wf_152_SEqua.e1ot');src: url('img/wf_152_SEqua.eot?#iefix') format('embedded-opentype'),url('img/wf_152_SEqua.woff') format('woff');}.ZT{font-family:ZT;}*/
+		body {
+			padding: 0;
+			margin: 0 auto;
+			background: #fff;
+			height: 100%;
+			width: 100%;
+			font-size: 16px;
+		}
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+
+		.bgContent {
+			width: 90vw;
+			height: 419px;
+			background: url(./img/form.png) no-repeat;
+			background-size: 100%;
+			margin: 0 auto;
+		}
+		.zzsc-container {
+			margin-left: 34vw;
+			margin-top: 9%;
+			width: 48vw;
+		}
+		.userName {
+			width: 44vw;
+			border: 0;
+			padding: 5px;
+			font-size: 20px;
+			font-weight: 500;
+			margin-left: 35vw;
+			background: transparent;
+
+		}
+		.pk-input.-clean {
+			border: 0;
+			height: 4vw;
+			background: url(./img/open.png) no-repeat 83% transparent;
+			background-size: 10%;
+		}
+		.pk-input {
+			width: calc(100% - 16px);
+			float: left;
+			cursor: pointer;
+			padding: 8px;
+			font-family:"ZT";
+			font-size: 18px;
+		}
+		.description {
+			margin: 25vw auto 15vw;
+			font-family: "Microsoft YaHei";
+			padding-left: 10px;
+			color: #ccc;
+		}
+		.userNameBg {
+			padding-top: 17%;
+		}
+		.description h3 {
+			font-size: 0.93rem;
+		}
+		.description p {
+			font-size: 0.8rem;
+			margin: 5px auto;
+			color: #a1a1a1;
+		}
+		.makeSure {
+			width: 120px;
+			height: 45px;
+			background: url(img/btn.png) no-repeat 0 -89px;
+			background-size: 100%;
+			margin: 0 auto;
+			border: 0;
+			display: block;
+		}
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		.layer_sex{
+			width: 300px;
+		}
+		.layer_title{
+			color: #b3b3b3;
+			background: #efefef;
+			width: calc(100% - 20px);
+			font-size: 18px;
+			padding: 20px 10px;
+		}
+		.layer_content_off{
+			border-bottom: 1px solid #efefef;
+			cursor: pointer;
+			padding: 14px 10px;
+			width: calc(100% - 20px);
+		}
+		.layer_content_on{
+			background: #fcc700;
+			border-bottom: 1px solid #efefef;
+			cursor: pointer;
+			padding: 14px 10px;
+			width: calc(100% - 20px);
+		}
+		.layer_del{
+			font-size:22px;
+			width: 58px;
+			height: 58px;
+			line-height: 58px;
+			text-align: center;
+			position: absolute;
+			top: 0px;
+			right: 0px;
+			color: #ccc;
+			font-size: 22px;
+			cursor: pointer;
+		}
+		.answer{
+			display: none;
+		}
+		/*.answer_mian {
+			width: 90vw;
+			height: 500px;
+			background: url(./img/bg.png) no-repeat;
+			background-size: 100%;
+			margin: 0 auto;
+			margin-top: 5vw;
+		}
+		.shart{
+			width: 120px;
+			height: 44px;
+			background: url(img/btn.png) no-repeat;
+			background-size: 100%;
+			margin: 0 auto;
+			border: 0;
+			display: block;
+		}*/
+		.answer_top{
+			text-align: center;
+			padding-top: 25%;
+			color: #fcc700;
+
+		}
+		.answer_name{padding:0 20px;font-size: 26px;}
+		.fraction{color: #fcc700;font-size: 16px;}
+		.answer_main{padding-top: 4%;font-size: 16px;white-space:nowrap; }
+		canvas{font-family: "ZT";}
+		.title{font-size: 22px;font-weight: bold;text-align: center;margin-top: 40px;}
+	</style>
+
+
+</head>
+<body>
+
+<div class="main2">
+	<div class="title">人生成绩单</div>
+	<div ui-view="" class="ng-scope">
+		<div class="bgContent ng-scope">
+			<p class="userNameBg"><input type="text" name="userName"  maxlength="4" class="userName" placeholder="请输入中文" value=""></p>
+			<div class="zzsc-container">
+				<div class="content -bg">
+					<div class="form-group" style="position:relative;float:left;">
+						<input maxlength='4' onclick="openSex()" name="sex" value='女' readonly="readonly" class="pk-input -clean" placeholder="请选择性别"><span class="pk-arrow -clean"></span></div>
+				</div>
+			</div>
+			<div class="description">进行测试后会获得从外表、智商、脾气等各个方面的个人成绩</div>
+			<button type="button" class="make" style="font-size:16px;width:80%;background:#FFCC00;height:40px;border:1px solid #000;border-radius:10px;display:block;margin: auto;" onclick="gogo()">开始</button>
+		</div>
+	</div>
+</div>
+<div class="answer" >
+	<img id="img" src="">
+	<center style='font-size:20px; color: #fcc700;line-height:40px;'>长按保存上面的图片</center>
+	<canvas id="myCanvas" width='375px'  height="515px" style="border:1px solid #d3d3d3;">
+		您的浏览器不支持 HTML5 canvas 标签。</canvas>
+	<!--	<button type="button" onclick="shart()" class="shart"></button>-->
+</div>
+<script type="text/javascript">
+//获取地址栏参数//可以是中文参数
+function getUrlParam(key) {
+    // 获取参数
+    var url = window.location.search;
+    // 正则筛选地址栏
+    var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+    // 匹配目标参数
+    var result = url.substr(1).match(reg);
+    //返回参数值
+    return result ? decodeURIComponent(result[2]) : null;
+}
+
+
+</script>
+<SCRIPT LANGUAGE="JavaScript">
+    if(getUrlParam('cate_id')){
+            var cate_id = getUrlParam('cate_id');
+        }else {
+            var cate_id = 1;
+    }
+    var name="";
+    var sex="";
+    var text1_sex1=["一个笑容能迷死万千少女", "耐看型，越看越帅气", "帅气满分，鼻子带财", "笑起来像个孩子", "眼很迷人"];
+    var text1 = ["妥妥的颜值担当", "活脱脱的小仙女", "傻傻惹人爱", "呆萌美少女", "气质不俗的素颜女神"];
+    var text2 = ["没话说，绝对是天才", "看着傻，实际上很聪明", "团队中的智商担当", "常常对别人进行智商碾压", "智商很高，但没“绝顶”"];
+    var text3_sex1 = ["对朋友很有义气，EQ高", "有斗志不服输", "洒脱，不斤斤计较", "外表糙汉子，内心很温柔", "心软，但吃软不吃硬","有斗志不服输", "洒脱，不斤斤计较"];    //7
+    var text3 = ["外表小仙女，内心女汉子", "重视友情，超讲义气", "有一颗少女心", "单纯可爱，值得深交", "人美心善，接近完美", "不爱计较更不爱记仇", "忽冷忽热，十分傲娇"];
+    var text4 = ["对感情专一，认定不分手", "从不套路，只有真心", "在一起越久，越懂得珍惜", "默默付出，从不抱怨", "情痴，连暗恋都十分长情"];
+    var text0=["无可挑剔的最佳女友", "出类拔萃的最佳女友", "万里选一的最佳女友", "绝无仅有的最佳女友", "最值得拥有的最佳女友"];
+    var text0_sex1=["无可挑剔的最佳男友", "万里选一的最佳男友", "出类拔萃的最佳男友", "绝无仅有的最佳男友", "最值得拥有的最佳男友"];
+    var text5_sex1=[
+        "认识前觉得你话不多，认识后发现你超有梗！又帅又幽默，简直完美，非常羡慕你！",
+        "有时候你很外向，善于交际，乐于与人相处，但内心也时常对人有警惕，放松点！",
+        "你的直觉比较敏锐，容易看透别人的想法，但有时候只是不说出来而已，放松点！",
+        "你有时很外向人缘也不错，但烦恼会自己一个人放在心里，不愿意告诉别人。",
+        "你和朋友关系相处和睦，但有时你有会显得比较自闭，更情愿深居简出。",
+        "你从不会毫不思索的接受别人的观点，很有自己的主见，不过有时很固执。",
+        "你外表虽然自信开朗，但是内心也有烦躁不安的一面，你希望受认同的欲望太强烈了。"
+    ];
+    var text5=[
+        "其实你是一个很容易满足的人，但连这一点小小的满足却总也得不到。",
+        "你从不会毫不思索地接受别人的观点，很有主见，不过有时很固执。",
+        "人们都觉得你非常成熟，但我更了解你。我可以从你的眼中看出扔然是个小女孩。",
+        "你表面看起来很强悍，但你内心还有温柔细腻的一面，擅长规划自己的优秀人物！",
+        "虽然你一直在试图装作坚强，但你的内心却很脆弱敏感，不认识你的人会觉得你比较冷淡。",
+        "你看起来很活泼，但你仍然在某些感情上压抑了自己，你害怕别人进入你的内心世界。",
+        "你喜爱自由，又喜欢玩。不过，你的朋友和家人在你生命中有很重要的地位，你很爱他们。",
+        "你看起来很洒脱，但内心深处并是不那样，当你一个人的时候会感觉很空虚很寂寞。",
+        "别人都以为你过得很快乐，但内心深处并是不那样，真心朋友其实并没有别人想的那么多。",
+        "你不想让人发现你的柔软，于是你就用坚强把它包裹起来，可万一破了，你就会很受伤…",
+        "有时很热情，温柔，但是心情不好的时候会对人非常冷漠，不希望别人给你太多的约束。"
+    ];
+    var _width=0;
+    $(function(){
+        _width=$("body").width();
+        $("#myCanvas").attr("height",_width*1.7+"px");
+        var img=new Image();
+        img.crossOrigin="*"; //关键
+        // img.src="http://qn06.ningduleicha123.com/image_20171229_5a45ac624de37.jpg";
+        img.src="./img/bg.jpg";
+        img.onload=function(){}
+    })
+
+    function gogo(){
+        name=$("input[name=userName]").val();
+        sex=$("input[name=sex]").val();
+        if(name==""){
+            layer.msg('请输入名字！');
+            return;
+        }
+        $(".main2").hide();
+        // layer.load();
+        var index = Math.floor((Math.random()*text1.length));
+        if(sex=="男"){
+            text1=text1_sex1;
+            text3=text3_sex1;
+            text0=text0_sex1;
+        }
+        var num1=Math.floor((Math.random()*text1.length));
+        var num2=Math.floor((Math.random()*text2.length));
+        var num3=Math.floor((Math.random()*text3.length));
+        var num4=Math.floor((Math.random()*text4.length));
+        var num5=Math.floor((Math.random()*text5.length));
+        var num0=Math.floor((Math.random()*text0.length));
+        var sum=[100,99,98,97,96,95,94,93,92,91,90];
+        var sum1=sum[Math.floor((Math.random()*sum.length))];
+        var sum2=sum[Math.floor((Math.random()*sum.length))];
+        var sum3=sum[Math.floor((Math.random()*sum.length))];
+        var sum4=sum[Math.floor((Math.random()*sum.length))];
+        var fraction=parseInt((sum1+sum2+sum3+sum4)/4);
+        var answerJson={name:name,sex:sex,fraction:fraction,data:[
+            {text:text1[num1],num:sum1+"分"},
+            {text:text2[num2],num:sum2+"分"},
+            {text:text3[num3],num:sum3+"分"},
+            {text:text4[num4],num:sum4+"分"},
+            {text:text5[num5]},
+            {text:text0[num0]}]
+        };
+        $("#myCanvas").attr("width",_width+"px");
+        var canvas=document.getElementById("myCanvas");
+        var ctx=canvas.getContext("2d");
+        var img=new Image();
+        img.crossOrigin="*";
+        img.src="./img/bg.jpg";
+        // qr_img="http://img3.imgtn.bdimg.com/it/u=3639082178,3763666109&fm=27&gp=0.jpg";
+        //img.src="./img/bg.png";
+        img.onload=function(){
+            ctx.drawImage(img,0,0,_width,_width*1.7);
+            // ctx.drawImage(qr_img,0,0,_width,_width*1.7);
+            // drawCanvas(ctx, canvas, name.length, answerJson);
+            // layer.closeAll();
+            // $(".answer").show();
+        }
+        
+        setTimeout(function(){
+            var shartImg=new Image();
+            shartImg.crossOrigin="*";
+            $.get("http://kao.5268w.com/app.php?c=Message&act=woksm", {
+                "name": $("input[name=userName]").val(),
+                "gender": $("input[name=sex]").val(),
+                "cate_id":cate_id,  
+                },
+                function(data, status) {
+
+                        console.log(data);
+                        shartImg.src='http://img3.imgtn.bdimg.com/it/u=3639082178,3763666109&fm=27&gp=0.jpg';
+            //          shartImg.src="http://qn06.ningduleicha123.com/image_20170330_58dcabedcb432.jpg";
+                        // shartImg.src="../shart.png";
+                        shartImg.onload=function(){
+                            ctx.drawImage(shartImg,_width*0.1,_width*1.43,70,70);
+                            drawCanvas(ctx, canvas, name.length, answerJson);
+                        }
+                        layer.closeAll();
+                        $(".answer").show();
+            
+            },"json");
+            
+        },200)
+    }
+    function drawCanvas(ctx, canvas, length, data) {
+        ctx.font = "22px ZT";
+        ctx.fillStyle = "#454545";
+        if (length > 3) {
+            ctx.fillText(name, 60, _width*0.26);
+        } else if (length > 2) {
+            ctx.fillText(name, 60, _width*0.26);
+        } else if (length > 1) {
+            ctx.fillText(name, 65, _width*0.26);
+        } else {
+            ctx.fillText(name,70, _width*0.26);
+        }
+        ctx.font = "40px ZT";
+        ctx.fillStyle = "red";
+        var cont = data.fraction
+        ctx.fillText(cont, _width-90, _width*0.27);
+        ctx.font = "16px ZT";
+        ctx.fillStyle = "#ffffff";
+        ctx.fillText(data.data[5].text, _width*0.27, _width*0.45);
+        ctx.fillStyle = "#0A0909";
+        ctx.fillText(data.data[0].num, _width*0.18, _width*0.58);
+        ctx.fillText(data.data[0].text, _width*0.18+40, _width*0.58);
+        ctx.fillText(data.data[1].num, _width*0.18, _width*0.73);
+        ctx.fillText(data.data[1].text, _width*0.18+40, _width*0.73);
+        ctx.fillText(data.data[2].num, _width*0.18, _width*0.9);
+        ctx.fillText(data.data[2].text, _width*0.18+40, _width*0.9);
+        ctx.fillText(data.data[3].num, _width*0.18, _width*1.05);
+        ctx.fillText(data.data[3].text, _width*0.18+40, _width*1.05);
+        ctx.fillText(data.data[4].text.substring(0,15), _width*0.18, _width*1.2);
+        ctx.fillText(data.data[4].text.substring(15,30), _width*0.18, _width*1.2+20);
+        ctx.fillText(data.data[4].text.substring(30,45), _width*0.18, _width*1.2+40);
+        // ctx.fillText(data.data[4].text.substring(22,33), _width*0.18, _width*1.07+40);
+        // ctx.fillText(data.data[4].text.substring(33,data.data[4].text.length), _width*0.19, _width*1.07+60);
+        ctx.save();
+        ctx.restore();
+        //生成图片
+        $("#img").attr("src",canvas.toDataURL("image/png"));
+        $("#myCanvas").hide();
+    }
+
+    function openSex(){
+        var select_class_1="layer_content_off";
+        var select_class_2="layer_content_on";
+        if(sex=="男"){
+            select_class_1="layer_content_on";
+            select_class_2="layer_content_off";
+        }
+        var html="<div class='layer_sex'><div class='layer_title'>请选择性别 <span class='layer_del' onclick='del()'>X</span></div>"+
+            "<div class='"+select_class_1+"' onclick='sexSelect(jQuery(this))'>男</div>"+
+            "<div class='"+select_class_2+"' onclick='sexSelect(jQuery(this))'>女</div></div>";
+        layer.open({
+            type: 1,
+            title: false,
+            closeBtn: 0,
+            shadeClose: true,
+            skin: 'yourclass',
+            content: html
+        });
+    }
+
+    function del(){
+        layer.closeAll();
+    }
+    function sexSelect(obj){
+        layer.closeAll();
+        sex=obj.text().trim();
+
+        $("input[name=sex]").val(sex);
+    }
+
+    function shart(){
+        var html="<div onclick='del()' style='height:"+window.screen.availHeight+"px;width:"+_width+"px;text-align:right;'><img src='img/share.png' style='padding:10px 20px;'></div>";
+        var index=layer.open({
+            type: 1,
+            title: false,
+            closeBtn: 0,
+            shadeClose: true,
+            skin: 'yourclass',
+            content: html,
+            area: ['100%', '100%']
+
+        });
+        layer.style(index,{
+            "background": 'rgba(0,0,0, .3)'
+        });
+    }
+
+</SCRIPT>
+</body>
+</html>
